@@ -4,7 +4,7 @@ import students from './students.routes';
 import statisticsRouter from './statistics.routes';
 import roomsRouter from './rooms.routes';
 import dormitoryCardRouter from './dormitoryCard.routes';
-
+import disciplineRoutes from '@/Routes/discipline.routes';
 function route(app: Application): void {
   // Debug endpoint to help frontend development
   app.get('/api/debug/students-sample', (req, res) => {
@@ -62,6 +62,7 @@ function route(app: Application): void {
   app.use('/api/rooms', roomsRouter);
   app.use('/api/auth', auth);
   app.use('/api/dormitoryCard', dormitoryCardRouter);
+  app.use('/api/discipline', disciplineRoutes);
 }
 
 export default route;
