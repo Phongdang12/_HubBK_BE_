@@ -25,8 +25,6 @@ export class RoomsController {
       res.status(500).json({ success: false, message: mysqlErrorMessage });
     }
   }
-<<<<<<< HEAD
-=======
   async getRoomDetail(req: Request<RoomCheckParamsDto>, res: Response): Promise<void> {
     try {
       const { buildingId, roomId } = req.params;
@@ -78,7 +76,6 @@ async updateRoom(req: Request, res: Response) {
     return res.status(400).json({ message: err.message || 'Update room failed' });
   }
 }
->>>>>>> quan0
 
   async getRoomsByBuildingId(
     req: Request<BuildingIdParamsDto>,

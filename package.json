@@ -24,10 +24,7 @@
   "homepage": "https://github.com/nKhanGh/DormBK-BE#readme",
   "description": "",
   "dependencies": {
-<<<<<<< HEAD
-=======
     "@prisma/client": "^6.19.0",
->>>>>>> quan0
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
@@ -47,10 +44,7 @@
     "lint-staged": "^15.5.1",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3",
-<<<<<<< HEAD
-=======
     "prisma": "^6.19.0",
->>>>>>> quan0
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"

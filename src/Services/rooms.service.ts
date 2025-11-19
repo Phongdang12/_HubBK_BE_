@@ -1,10 +1,6 @@
 import pool from '@/Config/db.config';
 import { Room } from '@/Interfaces/rooms.interface';
-<<<<<<< HEAD
-
-=======
 import { Student } from '@/Interfaces/student.interface';
->>>>>>> quan0
 export class RoomsService {
   constructor() {
     console.log('RoomsService initialized');
@@ -47,8 +43,6 @@ export class RoomsService {
       throw new Error('Unexpected result format');
     }
   }
-<<<<<<< HEAD
-=======
   async getRoomDetail(buildingId: string, roomId: string): Promise<Room> {
     const result: any = await pool.query(`CALL get_room_detail(?, ?)`, [buildingId, roomId]);
 
@@ -101,7 +95,6 @@ export class RoomsService {
     return rows[0]; // Trả về array sinh viên
   }
 
->>>>>>> quan0
 
   async getUnderoccupiedRoomsByBuildingId(buildingId: string): Promise<Room[]> {
     if (buildingId.length > 5) {

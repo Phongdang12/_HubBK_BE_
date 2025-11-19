@@ -1,12 +1,4 @@
 export interface Room {
-<<<<<<< HEAD
-  buildingId: string;
-  roomId: string;
-  maxNumberOfStudents: number;
-  currentNumberOfStudents: number;
-  occupancyRate: number;
-}
-=======
  building_id: string;
   room_id: string;
   max_num_of_students: number;
@@ -16,4 +8,3 @@ export interface Room {
   room_status: 'Available' | 'Occupied' | 'Under Maintenance';
 }
 
->>>>>>> quan0
