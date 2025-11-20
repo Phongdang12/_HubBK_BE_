@@ -169,3 +169,14 @@ export async function deleteDiscipline(action_id: string) {
     conn.release();
   }
 }
+
+export async function doesStudentExist(sssn: string) {
+  const conn = await pool.getConnection();
+  try {
+    const [rows] = await conn.query('SELECT 1 FROM student WHERE sssn = ? LIMIT 1', [sssn]);
+    // @ts-ignore
+    return Array.isArray(rows) && rows.length > 0;
+  } finally {
+    conn.release();
+  }
+}

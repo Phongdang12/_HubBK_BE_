@@ -1,16 +1,14 @@
 import { Router } from 'express';
 import StudentController from '../App/Controllers/students.controller';
 import { validateAll } from '@/App/Middlewares/validate';
-import { SsnParam, StudentBody } from '@/App/Validations/Students.validator';
+import { SsnParam } from '@/App/Validations/Students.validator';
 import { verifyToken } from '@/App/Middlewares/auth';
+
 const router = Router();
+
 router.get('/paginated', StudentController.getPaginated);
 router.get('/', verifyToken, StudentController.getStudent);
-router.post(
-  '/',
-  validateAll({ body: StudentBody }),
-  StudentController.createStudent,
-);
+router.post('/', StudentController.createStudent);
 router.get(
   '/:ssn',
   verifyToken,
@@ -19,7 +17,7 @@ router.get(
 );
 router.put(
   '/:ssn',
-  validateAll({ params: SsnParam, body: StudentBody }),
+  validateAll({ params: SsnParam }),
   StudentController.put,
 );
 router.delete(

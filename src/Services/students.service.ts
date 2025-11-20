@@ -274,4 +274,26 @@ static async getPaginated(page: number, limit: number) {
       throw new Error('Failed to fetch paginated students');
     }
   }
+
+  static async doesSsnExist(ssn: string, excludeSsn?: string): Promise<boolean> {
+    const params: any[] = [ssn];
+    let sql = 'SELECT 1 FROM student WHERE sssn = ?';
+    if (excludeSsn) {
+      sql += ' AND sssn <> ?';
+      params.push(excludeSsn);
+    }
+    const [rows]: any = await pool.query(sql + ' LIMIT 1', params);
+    return Array.isArray(rows) && rows.length > 0;
+  }
+
+  static async doesStudentIdExist(studentId: string, excludeSsn?: string): Promise<boolean> {
+    const params: any[] = [studentId];
+    let sql = 'SELECT 1 FROM student WHERE student_id = ?';
+    if (excludeSsn) {
+      sql += ' AND sssn <> ?';
+      params.push(excludeSsn);
+    }
+    const [rows]: any = await pool.query(sql + ' LIMIT 1', params);
+    return Array.isArray(rows) && rows.length > 0;
+  }
 }

@@ -4,6 +4,9 @@ import { validateAll } from '@/App/Middlewares/validate';
 import {
   BuildingIdParams,
   RoomCheckParams,
+  RoomStudentParams,
+  RoomUpdateBody,
+  RoomStudentMutationBody,
 } from '@/App/Validations/rooms.validator';
 import { verifyToken } from '@/App/Middlewares/auth';
 
@@ -67,6 +70,20 @@ roomsRouter.put(
   verifyToken,
   validateAll({ params: RoomCheckParams }),
   roomsController.updateRoom.bind(roomsController)
+);
+
+roomsRouter.post(
+  '/:buildingId/:roomId/students',
+  verifyToken,
+  validateAll({ params: RoomCheckParams }),
+  roomsController.addStudentToRoom.bind(roomsController)
+);
+
+roomsRouter.delete(
+  '/:buildingId/:roomId/students/:sssn',
+  verifyToken,
+  validateAll({ params: RoomStudentParams }),
+  roomsController.removeStudentFromRoom.bind(roomsController)
 );
 
 export default roomsRouter;

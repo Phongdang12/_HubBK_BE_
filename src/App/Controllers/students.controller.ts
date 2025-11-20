@@ -2,8 +2,101 @@ import { Request, Response } from 'express';
 import { StudentService } from '@/Services/students.service';
 import { Student } from '@/Interfaces/student.interface';
 import { QueryError } from 'mysql2';
+import {
+  StudentBody,
+  StudentBodyDto,
+  STUDENT_GENERAL_ERROR_MESSAGE,
+  STUDENT_ID_ERROR_MESSAGE,
+  STUDENT_SSN_ERROR_MESSAGE,
+} from '@/App/Validations/Students.validator';
+import { SsnParamDto } from '@/App/Validations/Students.validator';
+
+type FieldError = {
+  field: string;
+  message: string;
+};
 
 class StudentController {
+  private static logValidationError(message: string, value?: unknown) {
+    const printable =
+      value === undefined || value === null || value === ''
+        ? 'Không có'
+        : JSON.stringify(value);
+    console.error(`Lỗi: ${message} Giá trị được chọn: ${printable}.`);
+  }
+
+  private static respondWithFieldErrors(
+    res: Response,
+    fieldErrors: FieldError[],
+    source?: Record<string, unknown>,
+    status = 400,
+  ) {
+    fieldErrors.forEach(({ field, message }) => {
+      const value = source ? source[field] : undefined;
+      StudentController.logValidationError(message, value);
+    });
+    res.status(status).json({
+      error: STUDENT_GENERAL_ERROR_MESSAGE,
+      fieldErrors,
+    });
+  }
+
+  private static mapIssues(issues: any[]): FieldError[] {
+    return issues.map((issue) => ({
+      field: issue.path?.[0]?.toString() || 'form',
+      message: issue.message,
+    }));
+  }
+
+  private static parseStudentPayload(
+    res: Response,
+    rawBody: unknown,
+  ): StudentBodyDto | null {
+    const parsed = StudentBody.safeParse(rawBody);
+    if (!parsed.success) {
+      StudentController.respondWithFieldErrors(
+        res,
+        StudentController.mapIssues(parsed.error.issues),
+        rawBody as Record<string, unknown>,
+      );
+      return null;
+    }
+    return parsed.data;
+  }
+
+  private static async ensureUniqueIdentifiers(
+    res: Response,
+    payload: StudentBodyDto,
+    excludeSsn?: string,
+  ): Promise<boolean> {
+    const ssn = payload.ssn as string;
+    const studentId = payload.student_id as string;
+
+    if (!excludeSsn && (await StudentService.doesSsnExist(ssn))) {
+      StudentController.respondWithFieldErrors(
+        res,
+        [{ field: 'ssn', message: STUDENT_SSN_ERROR_MESSAGE }],
+        { ssn },
+        409,
+      );
+      return false;
+    }
+
+    if (
+      await StudentService.doesStudentIdExist(studentId, excludeSsn)
+    ) {
+      StudentController.respondWithFieldErrors(
+        res,
+        [{ field: 'student_id', message: STUDENT_ID_ERROR_MESSAGE }],
+        { student_id: studentId },
+        409,
+      );
+      return false;
+    }
+
+    return true;
+  }
+
   static async getStudent(req: Request, res: Response) {
     try {
       const students: Student[] = await StudentService.getAllStudents();
@@ -108,25 +201,57 @@ class StudentController {
 
 
   static async createStudent(req: Request, res: Response) {
-    const student: Student = req.body;
     try {
-      await StudentService.insertStudent(student);
+      const payload = StudentController.parseStudentPayload(res, req.body);
+      if (!payload) return;
+
+      const isUnique = await StudentController.ensureUniqueIdentifiers(
+        res,
+        payload,
+      );
+      if (!isUnique) return;
+
+      await StudentService.insertStudent(payload as Student);
       res.status(201).json({ message: 'Student created successfully' });
     } catch (error) {
       const mysqlErrorMessage =
         (error as QueryError).message || 'Unknown error';
+      console.error('Unexpected error when creating student:', error);
       res.status(500).json({ success: false, message: mysqlErrorMessage });
     }
   }
 
-  static async put(req: Request, res: Response): Promise<void> {
-    const student: Student = req.body;
+  static async put(
+    req: Request<SsnParamDto>,
+    res: Response,
+  ): Promise<void> {
     try {
-      await StudentService.updateStudent(student);
+      const { ssn } = req.params;
+      const payload = StudentController.parseStudentPayload(res, req.body);
+      if (!payload) return;
+
+      if (payload.ssn !== ssn) {
+        StudentController.respondWithFieldErrors(
+          res,
+          [{ field: 'ssn', message: STUDENT_SSN_ERROR_MESSAGE }],
+          { ssn: payload.ssn },
+        );
+        return;
+      }
+
+      const isUnique = await StudentController.ensureUniqueIdentifiers(
+        res,
+        payload,
+        ssn,
+      );
+      if (!isUnique) return;
+
+      await StudentService.updateStudent(payload as Student);
       res.status(200).json({ message: 'Student updated successfully' });
     } catch (error) {
       const mysqlErrorMessage =
         (error as QueryError).message || 'Unknown error';
+      console.error('Unexpected error when updating student:', error);
       res.status(500).json({ success: false, message: mysqlErrorMessage });
     }
   }
