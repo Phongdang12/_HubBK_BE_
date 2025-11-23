@@ -82,8 +82,8 @@ CREATE TABLE `living_room` (
 LOCK TABLES `living_room` WRITE;
 
 INSERT INTO `living_room` (building_id, room_id, max_num_of_students, current_num_of_students, rental_price, occupancy_rate, room_status) VALUES 
-('BK001','P.104',6,3,1500000.00,50.00,'Available'),('BK001','P.201',6,3,1500000.00,50.00,'Available'),('BK001','P.202',6,0,1500000.00,0.00,'Available'),('BK001','P.203',6,0,1500000.00,0.00,'Available'),('BK001','P.204',6,4,1500000.00,66.67,'Available'),('BK001','P.301',6,0,1500000.00,0.00,'Available'),('BK001','P.302',6,0,1500000.00,0.00,'Available'),('BK001','P.303',6,0,1500000.00,0.00,'Available'),('BK001','P.304',6,4,1500000.00,66.67,'Available'),('BK001','P.401',6,0,1500000.00,0.00,'Available'),('BK001','P.402',6,0,1500000.00,0.00,'Available'),('BK001','P.403',6,0,1500000.00,0.00,'Available'),('BK001','P.404',6,0,1500000.00,0.00,'Available'),
-('BK002','P.102',6,2,1500000.00,33.33,'Available'),('BK002','P.104',6,1,1500000.00,16.67,'Available'),('BK002','P.201',6,0,1500000.00,0.00,'Available'),('BK002','P.202',6,0,1500000.00,0.00,'Available'),('BK002','P.203',6,1,1500000.00,16.67,'Available'),('BK002','P.204',6,4,1500000.00,66.67,'Available'),('BK002','P.301',6,0,1500000.00,0.00,'Available'),('BK002','P.302',6,0,1500000.00,0.00,'Available'),('BK002','P.303',6,0,1500000.00,0.00,'Available'),('BK002','P.304',6,0,1500000.00,0.00,'Available'),('BK002','P.401',6,0,1500000.00,0.00,'Available'),('BK002','P.402',6,0,1500000.00,0.00,'Available'),('BK002','P.403',6,0,1500000.00,0.00,'Available'),('BK002','P.404',6,0,1500000.00,0.00,'Available'),
+('BK001','P.101',6,2,1500000.00,33.33,'Available'),('BK001','P.104',6,3,1500000.00,50.00,'Available'),('BK001','P.201',6,3,1500000.00,50.00,'Available'),('BK001','P.202',6,0,1500000.00,0.00,'Available'),('BK001','P.203',6,0,1500000.00,0.00,'Available'),('BK001','P.204',6,4,1500000.00,66.67,'Available'),('BK001','P.301',6,0,1500000.00,0.00,'Available'),('BK001','P.302',6,0,1500000.00,0.00,'Available'),('BK001','P.303',6,0,1500000.00,0.00,'Available'),('BK001','P.304',6,4,1500000.00,66.67,'Available'),('BK001','P.401',6,0,1500000.00,0.00,'Available'),('BK001','P.402',6,0,1500000.00,0.00,'Available'),('BK001','P.403',6,0,1500000.00,0.00,'Available'),('BK001','P.404',6,0,1500000.00,0.00,'Available'),
+('BK002','P.101',6,2,1500000.00,33.33,'Available'),('BK002','P.102',6,2,1500000.00,33.33,'Available'),('BK002','P.104',6,1,1500000.00,16.67,'Available'),('BK002','P.201',6,0,1500000.00,0.00,'Available'),('BK002','P.202',6,0,1500000.00,0.00,'Available'),('BK002','P.203',6,1,1500000.00,16.67,'Available'),('BK002','P.204',6,4,1500000.00,66.67,'Available'),('BK002','P.301',6,0,1500000.00,0.00,'Available'),('BK002','P.302',6,0,1500000.00,0.00,'Available'),('BK002','P.303',6,0,1500000.00,0.00,'Available'),('BK002','P.304',6,0,1500000.00,0.00,'Available'),('BK002','P.401',6,0,1500000.00,0.00,'Available'),('BK002','P.402',6,0,1500000.00,0.00,'Available'),('BK002','P.403',6,0,1500000.00,0.00,'Available'),('BK002','P.404',6,0,1500000.00,0.00,'Available'),
 ('BK003','P.102',6,0,1500000.00,0.00,'Available'),('BK003','P.104',6,6,1500000.00,100.00,'Occupied'),('BK003','P.201',6,0,1500000.00,0.00,'Available'),('BK003','P.202',6,0,1500000.00,0.00,'Available'),('BK003','P.203',6,0,1500000.00,0.00,'Available'),('BK003','P.204',6,5,1500000.00,83.33,'Available'),('BK003','P.301',6,0,1500000.00,0.00,'Available'),('BK003','P.302',6,0,1500000.00,0.00,'Available'),('BK003','P.303',6,0,1500000.00,0.00,'Available'),('BK003','P.304',6,4,1500000.00,66.67,'Available'),('BK003','P.401',6,0,1500000.00,0.00,'Available'),('BK003','P.402',6,0,1500000.00,0.00,'Available'),('BK003','P.403',6,0,1500000.00,0.00,'Available'),('BK003','P.404',6,0,1500000.00,0.00,'Available'),
 ('BK004','P.102',6,0,1500000.00,0.00,'Available'),('BK004','P.104',6,2,1500000.00,33.33,'Available'),('BK004','P.201',6,0,1500000.00,0.00,'Available'),('BK004','P.202',6,0,1500000.00,0.00,'Available'),('BK004','P.203',6,0,1500000.00,0.00,'Available'),('BK004','P.204',6,4,1500000.00,66.67,'Available'),('BK004','P.301',6,0,1500000.00,0.00,'Available'),('BK004','P.302',6,0,1500000.00,0.00,'Available'),('BK004','P.303',6,0,1500000.00,0.00,'Available'),('BK004','P.304',6,0,1500000.00,0.00,'Available'),('BK004','P.401',6,0,1500000.00,0.00,'Available'),('BK004','P.402',6,0,1500000.00,0.00,'Available'),('BK004','P.403',6,0,1500000.00,0.00,'Available'),('BK004','P.404',6,0,1500000.00,0.00,'Available');
 
@@ -171,7 +171,116 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 LOCK TABLES `student` WRITE;
-INSERT INTO `student` VALUES ('05620513','012345670013','Khoi Nguyen','Minh','2003-06-02','M','Kinh','Active','Good','2312613','KHMT1','Computer Science','BK001','P.104',1,'0389162347, 0328190284','khoi.nguyenminh03@hcmut.edu.vn; khoinguyen13@gmail.com','Tam Dan, Quang Nam','075362513699','Nguyen Van An','Father','Teacher','1975-05-14','0389162345','Tam Dan, Quang Nam'),('05620514','012345670014','Mai','Nguyen Phuong','2006-03-09','F','Kinh','Active','Good','2212345','KHMT2','Computer Science','BK001','P.104',1,'0328190284','mai.nguyenphuong06@hcmut.edu.vn','Son Tra, Da Nang','075362513702','Tran Thi Linh','Mother','Accountant','1980-11-25','0328190286','Son Tra, Da Nang'),('05620515','012345670015','Ngoc','Nguyen Minh','2003-12-01','F','Kinh','Active','Good','2012346','CNTT1','Information Technology','BK003','P.204',1,'0323824785','ngoc.nguyenminh03@hcmut.edu.vn','Cam Le, Da Nang','075362513703','Le Van Hung','Father','Doctor','1973-07-18','0323824786','Cam Le, Da Nang'),('05620516','012345670016','Nam','Nguyen Hao','2006-03-02','M','Kinh','Active','Good','2112347','CNTT2','Information Technology','BK001','P.104',1,'0309238478, 0302455638','nam.nguyenhao06@hcmut.edu.vn, namhao987@gmail.com','Thanh Khe, Da Nang','075362513705','Nguyen Anh Tuan','Father','Businessman','1972-12-05','0309238479','Thanh Khe, Da Nang'),('05620517','012345670017','Ngan','Pham Kim','2003-10-20','F','Kinh','Active','Good','2312348','DTVT1','Electronics and Telecommunications Engineering','BK002','P.102',1,'0320245757','ngan.phamkim03@hcmut.edu.vn','Hoa Vang, Da Nang','075362513708','Nguyen Thi Lan','Mother','Nurse','1974-10-10','0320245759','Hoa Vang, Da Nang'),('05620518','012345670018','Phuong','Tran Ngoc','2005-03-26','F','Kinh','Active','Good','2412349','DTVT2','Electronics and Telecommunications Engineering','BK002','P.104',1,'0329287547, 0329309458','phuong.tranngoc05@hcmut.edu.vn','Hoa An, Da Nang, Thanh Khe, Da Nang','075362513710','Le Thi Huong','Mother','Teacher','1975-05-25','0329287549','Hoa An, Da Nang'),('05620519','012345670019','Phu','Nguyen Quoc','2005-07-23','M','Kinh','Active','Good','2212350','CK1','Mechanical Engineering','BK002','P.203',1,'0320918267','phu.nguyenquoc05@hcmut.edu.vn','Cau Moi, Quang Ninh','075362513711','Nguyen Van Hai','Father','Fisherman','1969-08-12','0320918268','Cau Moi, Quang Ninh'),('05620520','012345670020','Phung','Nguyen Minh','2004-05-01','F','Kinh','Non_Active','Good','2012351','CK2','Mechanical Engineering','BK002','P.102',1,'0387326653','phung.nguyenminh04@hcmut.edu.vn','Bai Chay, Quang Ninh','075362513714','Tran Thi Nga','Mother','Receptionist','1978-07-19','0387326655','Bai Chay, Quang Ninh'),('05620521','012345670021','Quan','Vo Anh','2005-09-06','M','Kinh','Active','Good','2112352','D1','Electrical Engineering','BK003','P.104',1,'0320975643, 0329235432','quan.voanh05@hcmut.edu.vn, quanvo05@gmail.com','Quang Trung, Quang Ninh','075362513715','Vo Van Long','Father','Construction Worker','1972-09-03','0320975644','Quang Trung, Quang Ninh'),('05620522','012345670022','Phuoc Nguyen','Thien','2005-10-17','M','Kinh','Active','Good','2312353','D2','Electrical Engineering','BK003','P.104',1,'0399706545','phuoc.nguyenthien05@hcmut.edu.vn;phuoc@gmail.com','Yen Thanh, Quang Ninh, Nam Dong, Thua Thien Hue','075362513718','Nguyen Thi Nhung','Mother','Teacher','1974-10-21','0399706547','Yen Thanh, Quang Ninh'),('05620523','012345670023','Quynh','Nguyen Ngoc Diem','2006-02-01','F','Kinh','Active','Good','2412354','HTTT1','Information Security','BK003','P.104',1,'0328100038','quynh.nguyenngocdiem06@hcmut.edu.vn','Mong Duong, Quang Ninh','075362513719','Nguyen Hoang Nam','Father','Driver','1973-01-30','0328100039','Mong Duong, Quang Ninh'),('05620524','012345670024','Quynh','Nguyen Thi Diem','2004-05-01','F','Kinh','Active','Good','2212355','HTTT2','Information Security','BK003','P.104',1,'0391203470','quynh.nguyenthidiem04@hcmut.edu.vn','Uong Bi, Quang Ninh','075362513721','Nguyen Van Phuc','Father','Electrician','1971-03-25','0391203471','Uong Bi, Quang Ninh'),('05620525','012345670025','Phat','Vo Tan','2004-05-01','M','Kinh','Active','Good','2012356','XD1','Civil Engineering','BK003','P.104',1,'0328906742, 0392348324','phat.vo10@hcmut.edu.vn, phatvo@gmail.com','Dong Tien, Hoa Binh','075362513724','Nguyen Thi Suong','Mother','Housewife','1972-12-18','0328906744','Dong Tien, Hoa Binh'),('05620526','012345670026','Son Bui','Ngoc','2003-12-11','M','Kinh','Active','Good','2112359','XD2','Civil Engineering','BK003','P.104',1,'0328109200','son.buingoc03@hcmut.edu.vn','Mai Chau, Hoa Binh','075362513725','Bui Van Thang','Father','Tour Guide','1974-05-19','0328109201','Mai Chau, Hoa Binh'),('05620527','012345670027','Tai','Nguyen Duc','2003-09-30','M','Thai','Active','Good','2312358','H1','Chemical Engineering','BK004','P.104',1,'0328102980, 0328239804','tai.nguyenduc03@hcmut.edu.vn','Dinh Hoa, Thai Nguyen','075362513727','Nguyen Duc Tung','Father','Tea Farmer','1970-11-15','0328102981','Dinh Hoa, Thai Nguyen'),('05620528','012345670028','Tan Nguyen','Nhat','2004-01-29','M','Kinh','Active','Good','2412359','H2','Chemical Engineering','BK004','P.104',1,'0322134783','tan.nguyennhat04@hcmut.edu.vn;tannhat@gmail.com','Son Cam, Thai Nguyen','075362513730','Nguyen Van Dong','Father','Teacher','1977-07-13','0336958963','Son Cam, Thai Nguyen'),('05620529','012345670029','Tien','Phan Ngoc','2005-09-17','M','Kinh','Non_Active','Good','2212360','MT1','Environmental Engineering','BK001','P.204',1,'0320975423','tien.phanngoc05@hcmut.edu.vn, tienphan@gmail.com','Hoa Binh, Hoa Binh','075362513731','Phan Van Yen','Father','Construction Worker','1971-08-10','0320975424','Hoa Binh, Hoa Binh'),('05620530','012345670030','Tu','Nguyen Anh','2003-02-12','M','Kinh','Active','Good','2012361','MT2','Environmental Engineering','BK001','P.204',1,'0328100347','tu.nguyenanh03@hcmut.edu.vn','Lang Son, Lang Son','075362513734','Tran Thi Bich','Mother','Housewife','1978-11-30','0328100349','Lang Son, Lang Son'),('05620531','012345670031','Tuong','Nguyen Ngoc','2005-03-14','M','Kinh','Active','Good','2112362','DK1','Control and Automation Engineering','BK001','P.204',1,'0326784592, 0322349823','tuong.nguyenngoc05@hcmut.edu.vn','Phu Tan, Dong Nai','075362513735','Vo Van Chien','Father','Factory Worker','1972-03-15','0326784593','Phu Tan, Dong Nai'),('05620532','012345670032','Thao','Nguyen Ngoc Thanh','2006-02-04','F','Kinh','Active','Good','2312363','DK2','Control and Automation Engineering','BK001','P.204',1,'0326735204','thao.nguyenngocthanh06@hcmut.edu.vn','Bac Giang, Bac Giang','075362513737','Nguyen Van Giang','Father','Farmer','1970-05-10','0326735205','Bac Giang, Bac Giang'),('05620533','012345670033','Thu','Nguyen Ngoc Minh','2005-03-31','F','Kinh','Active','Good','2412364','QL1','Industrial Management','BK002','P.204',1,'0327843792','thu.nguyenngocminh05@hcmut.edu.vn, thuminhnguyen123@gmail.com','Tuy An, Phu Yen, Tan Xuan, Phu Yen','075362513740','Nguyen Thi Lien','Mother','Seamstress','1977-06-25','0327843794','Tuy An, Phu Yen'),('05620534','012345670034','Thuy','Nguyen Thi Thanh','2003-02-15','F','Kinh','Active','Good','2212365','QL2','Industrial Management','BK002','P.204',1,'0328129343, 0339852345','thuy.nguyenthithanh03@hcmut.edu.vn','Phu Ly, Ha Nam','075362513742','Tran Thi Nga','Mother','Shopkeeper','1975-09-20','0328129345','Phu Ly, Ha Nam'),('05620535','012345670035','Uyen','Nguyen Ngoc','2005-02-18','M','Kinh','Active','Good','2012366','SCM1','Logistics and Supply Chain Management','BK002','P.204',1,'0393280450','uyen.nguyenngoc05@hcmut.edu.vn','Duc Tho, Ha Tinh','075362513743','Nguyen Van Phu','Other','Teacher','1974-07-25','0393280451','Duc Tho, Ha Tinh'),('05620536','012345670036','Vy','Nguyen Tuong','2004-06-13','M','Kinh','Active','Good','2112367','SCM2','Logistics and Supply Chain Management','BK002','P.204',1,'0924723455, 0959873235','vy.nguyenthuong04@hcmut.edu.vn','Quynh Luu, Nghe An','075362513745','Nguyen Van Son','Father','Farmer','1972-02-10','0924723456','Quynh Luu, Nghe An'),('05620537','012345670037','Vu','Tran Van','2003-02-12','M','Kinh','Active','Good','2312368','VL1','Materials Engineering','BK003','P.204',1,'0739012012','vu.tranvan03@hcmut.edu.vn','Vinh, Nghe An, Dong Tien, Hoa Binh','075362513748','Nguyen Thi Uyen','Mother','Teacher','1974-10-25','0739012014','Vinh, Nghe An'),('05620538','012345670038','Duc','Nguyen Minh','2003-03-15','M','Tay','Active','Good','2412369','VL2','Materials Engineering','BK003','P.204',1,'0928761451','duc.nguyenminh03@hcmut.edu.vn','Nam Dan, Nghe An','075362513749','Nguyen Van Viet','Father','Teacher','1973-08-15','0928761452','Nam Dan, Nghe An'),('05620539','012345670039','Toan Bui','Duc','2006-01-15','M','Kinh','Active','Good','2212370','SH1','Biotechnology','BK001','P.201',1,'0322934734','toan.buiduc06@hcmut.edu.vn;toanducr@gmail.com','Thanh Chuong, Nghe An','075362513751','Bui Van Yen','Father','Farmer','1971-04-06','0322934735','Thanh Chuong, Nghe An'),('05620540','012345670040','Tram','Nguyen Thuy','2004-08-01','F','Kinh','Non_Active','Good','2012371','SH2','Biotechnology','BK003','P.204',1,'0329235483, 0325359783','tram.nguyenthuy04@hcmut.edu.vn','Cua Lo, Nghe An','075362513752','Nguyen Van Anh','Other','Fisherman','1974-12-20','0329235484','Cua Lo, Nghe An'),('05620541','012345670041','Truc','Pham Ngoc','2006-01-24','M','Kinh','Active','Good','2412374','KT1','Computer Engineering','BK004','P.204',1,'0328198534','truc.phamngoc06@hcmut.edu.vn','Hung Nguyen, Nghe An','075362513754','Tran Van Cuong','Father','Teacher','1972-03-15','0391287452','Dien Chau, Nghe An'),('05620542','012345670042','Hau','Nguyen Phuc','2005-06-01','F','Kinh','Active','Good','2212375','KT2','Computer Engineering','BK004','P.204',1,'0327684529','hau.nguyenphuc05@hcmut.edu.vn','Kien Thuy, Hai Phong','075362513755','Le Van Duc','Father','Fisherman','1970-09-10','0320394755','Ngo Quyen, Hai Phong'),('05620543','012345670043','Thuan','Luong Minh','2003-12-05','M','Kinh','Active','Good','2112382','XD3','Civil Engineering','BK004','P.204',1,'0320394754','thuan.luongminh03@hcmut.edu.vn','Ngo Quyen, Hai Phong','075362513758','Tran Thi Hanh','Mother','Housewife','1977-11-25','0309237434','An Lao, Hai Phong'),('05620544','012345670044','Nhi','Nguyen Ngoc Thuy','2006-03-20','F','Kinh','Active','Good','2312383','H3','Chemical Engineering',NULL,NULL,1,'0309237432, 0329483452','nhi.nguyenngocthuy06@hcmut.edu.vn','An Lao, Hai Phong','075362513760','Nguyen Thi Linh','Other','Teacher','1975-06-15','0322934525','Van Lam, Hung Yen'),('05620545','012345670045','Dai','Nguyen Van','2005-02-17','M','Kinh','Active','Good','2012376','KHMT3','Computer Science','BK001','P.304',1,'0320293745','dai.nguyenvan05@hcmut.edu.vn, daivan@gmail.com','Van Lam, Hung Yen, Yen Thanh, Quang Ninh','075362513761','Pham Van Minh','Father','Businessman','1973-04-20','0302348524','Cua Lo, Nghe An'),('05620546','012345670046','Khiem','Pham Gia','2003-09-23','M','Kinh','Active','Good','2112377','CNTT3','Information Technology','BK001','P.304',1,'0302348523, 0339854982','khiem.phamgia03@hcmut.edu.vn','Cua Lo, Nghe An, Phan Thiet, Binh Thuan','075362513763','Le Thi Nga','Mother','Shopkeeper','1976-08-30','0920975344','Tan Nghia, Binh Thuan'),('05620547','012345670047','Tran','Nguyen Ngoc Thao','2005-05-29','F','Kinh','Active','Good','2312378','DTVT3','Electronics and Telecommunications Engineering','BK001','P.304',1,'0920975343','tran.nguyenngocthao05@hcmut.edu.vn','Tan Nghia, Binh Thuan, Hung Nguyen, Nghe An','075362513765','Nguyen Van Phat','Father','Soldier','1974-05-15','0328102400','Dong Ha, Quang Tri'),('05620548','012345670048','Tien','Nguyen Thuy','2004-03-19','F','Kinh','Active','Good','2412379','CK3','Mechanical Engineering','BK001','P.304',1,'0322934523, 0339845723','tien.nguyenthuy04@hcmut.edu.vn','Dong Ha, Quang Tri','075362513766','Le Van Quang','Father','Teacher','1972-10-10','0328724235','Huong Thuy, Thua Thien Hue'),('05620549','012345670049','Tuan','Nguyen Quoc','2005-09-12','M','Kinh','Active','Good','2212380','D3','Electrical Engineering','BK003','P.304',1,'0328102409','tuan.nguyenquoc05@hcmut.edu.vn, tuannguyen@gmail.com','Huong Thuy, Thua Thien Hue','075362513769','Tran Thi Trang','Mother','Nurse','1975-12-05','0329235799','Phu Bai, Thua Thien Hue'),('05620550','012345670050','Chi','Bui Ngoc Kim','2003-09-15','F','Hoa','Active','Good','2012381','HTTT3','Information Security','BK003','P.304',1,'0328724234, 0339785329','chi.buingockim03@hcmut.edu.vn','Phu Bai, Thua Thien Hue','075362513770','Nguyen Van Van','Father','Farmer','1973-03-20','0329459839','Nam Dong, Thua Thien Hue'),('05620551','012345670051','Chi','Pham Minh','2006-04-01','M','Kinh','Active','Good','2112372','PM1','Software Engineering','BK003','P.304',1,'0329235798','chi.phamminh06@hcmut.edu.vn, chipham00@gmail.com','Nam Dong, Thua Thien Hue','075362513772','Le Thi Xuan','Mother','Shopkeeper','1976-07-15','0328102982','Huong Tra, Thua Thien Hue'),('05620552','012345670052','Chien','Tran Duc','2002-01-26','M','Kinh','Active','Good','2312373','PM2','Software Engineering','BK003','P.304',1,'0329459838','chien.tranduc02@hcmut.edu.vn','Huong Tra, Thua Thien Hue','075362513773','Tran Van Binh','Father','Teacher','1972-09-22','0389199282','Dong Ha, Quang Tri');
+
+-- =====================================
+-- DEMO DATA FOR STATISTICS (2025)
+-- =====================================
+-- Additional students, disciplinary actions, and student_discipline records
+-- Date range: 2025-01-01 to 2025-11-30
+-- =====================================
+
+-- Insert additional students (100 new students)
+INSERT INTO `student` (sssn, cccd, first_name, last_name, birthday, sex, ethnic_group, study_status, health_state, student_id, class_name, faculty, building_id, room_id, has_health_insurance, phone_numbers, emails, addresses, guardian_cccd, guardian_name, guardian_relationship, guardian_occupation, guardian_birthday, guardian_phone_numbers, guardian_addresses) VALUES
+('05630001','012345670101','An','Tran Van','2004-01-15','M','Kinh','Active','Good','2413001','KHMT4','Computer Science','BK001','P.202',1,'0389123456','an.tranvan04@hcmut.edu.vn','Quan 1, Ho Chi Minh','075362520101','Tran Van Nam','Father','Engineer','1975-01-10','0389123457','Quan 1, Ho Chi Minh'),
+('05630002','012345670102','Binh','Le Thi','2005-02-20','F','Kinh','Active','Good','2513002','CNTT4','Information Technology','BK001','P.202',1,'0389123458','binh.lethi05@hcmut.edu.vn','Quan 2, Ho Chi Minh','075362520102','Le Van Hoa','Father','Teacher','1976-02-15','0389123459','Quan 2, Ho Chi Minh'),
+('05630003','012345670103','Cuong','Pham Duc','2003-03-25','M','Kinh','Active','Good','2313003','DTVT4','Electronics and Telecommunications Engineering','BK001','P.203',1,'0389123460','cuong.phamduc03@hcmut.edu.vn','Quan 3, Ho Chi Minh','075362520103','Pham Van Tuan','Father','Doctor','1974-03-20','0389123461','Quan 3, Ho Chi Minh'),
+('05630004','012345670104','Dung','Nguyen Minh','2004-04-10','M','Kinh','Active','Good','2413004','CK4','Mechanical Engineering','BK001','P.203',1,'0389123462','dung.nguyenminh04@hcmut.edu.vn','Quan 4, Ho Chi Minh','075362520104','Nguyen Van Long','Father','Businessman','1975-04-05','0389123463','Quan 4, Ho Chi Minh'),
+('05630005','012345670105','Em','Tran Thi','2005-05-15','F','Kinh','Active','Good','2513005','D4','Electrical Engineering','BK001','P.301',1,'0389123464','em.tranthi05@hcmut.edu.vn','Quan 5, Ho Chi Minh','075362520105','Tran Van Hung','Father','Accountant','1976-05-10','0389123465','Quan 5, Ho Chi Minh'),
+('05630006','012345670106','Giang','Le Van','2003-06-20','M','Kinh','Active','Good','2313006','HTTT4','Information Security','BK001','P.301',1,'0389123466','giang.levan03@hcmut.edu.vn','Quan 6, Ho Chi Minh','075362520106','Le Van Phuc','Father','Teacher','1974-06-15','0389123467','Quan 6, Ho Chi Minh'),
+('05630007','012345670107','Hoa','Pham Thi','2004-07-25','F','Kinh','Active','Good','2413007','XD4','Civil Engineering','BK001','P.302',1,'0389123468','hoa.phamthi04@hcmut.edu.vn','Quan 7, Ho Chi Minh','075362520107','Pham Van Dung','Father','Engineer','1975-07-20','0389123469','Quan 7, Ho Chi Minh'),
+('05630008','012345670108','Hung','Nguyen Van','2005-08-30','M','Kinh','Active','Good','2513008','H4','Chemical Engineering','BK001','P.302',1,'0389123470','hung.nguyenvan05@hcmut.edu.vn','Quan 8, Ho Chi Minh','075362520108','Nguyen Van Khoa','Father','Doctor','1976-08-25','0389123471','Quan 8, Ho Chi Minh'),
+('05630009','012345670109','Lan','Tran Thi','2003-09-05','F','Kinh','Active','Good','2313009','MT4','Environmental Engineering','BK001','P.303',1,'0389123472','lan.tranthi03@hcmut.edu.vn','Quan 9, Ho Chi Minh','075362520109','Tran Van Son','Father','Businessman','1974-09-01','0389123473','Quan 9, Ho Chi Minh'),
+('05630010','012345670110','Minh','Le Duc','2004-10-10','M','Kinh','Active','Good','2413010','DK4','Control and Automation Engineering','BK001','P.303',1,'0389123474','minh.leduc04@hcmut.edu.vn','Quan 10, Ho Chi Minh','075362520110','Le Van An','Father','Teacher','1975-10-05','0389123475','Quan 10, Ho Chi Minh'),
+('05630011','012345670111','Nga','Pham Thi','2005-11-15','F','Kinh','Active','Good','2513011','QL4','Industrial Management','BK001','P.401',1,'0389123476','nga.phamthi05@hcmut.edu.vn','Quan 11, Ho Chi Minh','075362520111','Pham Van Binh','Father','Accountant','1976-11-10','0389123477','Quan 11, Ho Chi Minh'),
+('05630012','012345670112','Oanh','Nguyen Thi','2003-12-20','F','Kinh','Active','Good','2313012','SCM4','Logistics and Supply Chain Management','BK001','P.401',1,'0389123478','oanh.nguyenthi03@hcmut.edu.vn','Quan 12, Ho Chi Minh','075362520112','Nguyen Van Cuong','Father','Engineer','1974-12-15','0389123479','Quan 12, Ho Chi Minh'),
+('05630013','012345670113','Phong','Tran Van','2004-01-25','M','Kinh','Active','Good','2413013','VL4','Materials Engineering','BK001','P.402',1,'0389123480','phong.tranvan04@hcmut.edu.vn','Binh Thanh, Ho Chi Minh','075362520113','Tran Van Dat','Father','Doctor','1975-01-20','0389123481','Binh Thanh, Ho Chi Minh'),
+('05630014','012345670114','Quang','Le Van','2005-02-28','M','Kinh','Active','Good','2513014','SH4','Biotechnology','BK001','P.402',1,'0389123482','quang.levan05@hcmut.edu.vn','Tan Binh, Ho Chi Minh','075362520114','Le Van Em','Father','Businessman','1976-02-23','0389123483','Tan Binh, Ho Chi Minh'),
+('05630015','012345670115','Rang','Pham Van','2003-03-05','M','Kinh','Active','Good','2313015','KT4','Computer Engineering','BK001','P.403',1,'0389123484','rang.phamvan03@hcmut.edu.vn','Tan Phu, Ho Chi Minh','075362520115','Pham Van Giang','Father','Teacher','1974-03-01','0389123485','Tan Phu, Ho Chi Minh'),
+('05630016','012345670116','Son','Nguyen Van','2004-04-10','M','Kinh','Active','Good','2413016','KHMT5','Computer Science','BK001','P.403',1,'0389123486','son.nguyenvan04@hcmut.edu.vn','Phu Nhuan, Ho Chi Minh','075362520116','Nguyen Van Hoa','Father','Accountant','1975-04-05','0389123487','Phu Nhuan, Ho Chi Minh'),
+('05630017','012345670117','Tam','Tran Thi','2005-05-15','F','Kinh','Active','Good','2513017','CNTT5','Information Technology','BK001','P.404',1,'0389123488','tam.tranthi05@hcmut.edu.vn','Go Vap, Ho Chi Minh','075362520117','Tran Van Hung','Father','Engineer','1976-05-10','0389123489','Go Vap, Ho Chi Minh'),
+('05630018','012345670118','Uyen','Le Thi','2003-06-20','F','Kinh','Active','Good','2313018','DTVT5','Electronics and Telecommunications Engineering','BK002','P.201',1,'0389123490','uyen.lethi03@hcmut.edu.vn','Binh Tan, Ho Chi Minh','075362520118','Le Van Khoa','Father','Doctor','1974-06-15','0389123491','Binh Tan, Ho Chi Minh'),
+('05630019','012345670119','Viet','Pham Van','2004-07-25','M','Kinh','Active','Good','2413019','CK5','Mechanical Engineering','BK002','P.201',1,'0389123492','viet.phamvan04@hcmut.edu.vn','Thu Duc, Ho Chi Minh','075362520119','Pham Van Lan','Father','Businessman','1975-07-20','0389123493','Thu Duc, Ho Chi Minh'),
+('05630020','012345670120','Xuan','Nguyen Thi','2005-08-30','F','Kinh','Active','Good','2513020','D5','Electrical Engineering','BK002','P.202',1,'0389123494','xuan.nguyenthi05@hcmut.edu.vn','Nha Be, Ho Chi Minh','075362520120','Nguyen Van Minh','Father','Teacher','1976-08-25','0389123495','Nha Be, Ho Chi Minh'),
+('05630021','012345670121','Yen','Tran Thi','2003-09-05','F','Kinh','Active','Good','2313021','HTTT5','Information Security','BK002','P.202',1,'0389123496','yen.tranthi03@hcmut.edu.vn','Can Gio, Ho Chi Minh','075362520121','Tran Van Nga','Father','Accountant','1974-09-01','0389123497','Can Gio, Ho Chi Minh'),
+('05630022','012345670122','Anh','Le Van','2004-10-10','M','Kinh','Active','Good','2413022','XD5','Civil Engineering','BK002','P.203',1,'0389123498','anh.levan04@hcmut.edu.vn','Cu Chi, Ho Chi Minh','075362520122','Le Van Oanh','Father','Engineer','1975-10-05','0389123499','Cu Chi, Ho Chi Minh'),
+('05630023','012345670123','Bao','Pham Van','2005-11-15','M','Kinh','Active','Good','2513023','H5','Chemical Engineering','BK002','P.203',1,'0389123500','bao.phamvan05@hcmut.edu.vn','Hoc Mon, Ho Chi Minh','075362520123','Pham Van Phong','Father','Doctor','1976-11-10','0389123501','Hoc Mon, Ho Chi Minh'),
+('05630024','012345670124','Chi','Nguyen Thi','2003-12-20','F','Kinh','Active','Good','2313024','MT5','Environmental Engineering','BK002','P.301',1,'0389123502','chi.nguyenthi03@hcmut.edu.vn','Quan 1, Ho Chi Minh','075362520124','Nguyen Van Quang','Father','Businessman','1974-12-15','0389123503','Quan 1, Ho Chi Minh'),
+('05630025','012345670125','Dung','Tran Van','2004-01-25','M','Kinh','Active','Good','2413025','DK5','Control and Automation Engineering','BK002','P.301',1,'0389123504','dung.tranvan04@hcmut.edu.vn','Quan 2, Ho Chi Minh','075362520125','Tran Van Rang','Father','Teacher','1975-01-20','0389123505','Quan 2, Ho Chi Minh'),
+('05630026','012345670126','Em','Le Thi','2005-02-28','F','Kinh','Active','Good','2513026','QL5','Industrial Management','BK002','P.302',1,'0389123506','em.lethi05@hcmut.edu.vn','Quan 3, Ho Chi Minh','075362520126','Le Van Son','Father','Accountant','1976-02-23','0389123507','Quan 3, Ho Chi Minh'),
+('05630027','012345670127','Giang','Pham Van','2003-03-05','M','Kinh','Active','Good','2313027','SCM5','Logistics and Supply Chain Management','BK002','P.302',1,'0389123508','giang.phamvan03@hcmut.edu.vn','Quan 4, Ho Chi Minh','075362520127','Pham Van Tam','Father','Engineer','1974-03-01','0389123509','Quan 4, Ho Chi Minh'),
+('05630028','012345670128','Hoa','Nguyen Thi','2004-04-10','F','Kinh','Active','Good','2413028','VL5','Materials Engineering','BK002','P.303',1,'0389123510','hoa.nguyenthi04@hcmut.edu.vn','Quan 5, Ho Chi Minh','075362520128','Nguyen Van Uyen','Father','Doctor','1975-04-05','0389123511','Quan 5, Ho Chi Minh'),
+('05630029','012345670129','Hung','Tran Van','2005-05-15','M','Kinh','Active','Good','2513029','SH5','Biotechnology','BK002','P.303',1,'0389123512','hung.tranvan05@hcmut.edu.vn','Quan 6, Ho Chi Minh','075362520129','Tran Van Viet','Father','Businessman','1976-05-10','0389123513','Quan 6, Ho Chi Minh'),
+('05630030','012345670130','Lan','Le Thi','2003-06-20','F','Kinh','Active','Good','2313030','KT5','Computer Engineering','BK002','P.304',1,'0389123514','lan.lethi03@hcmut.edu.vn','Quan 7, Ho Chi Minh','075362520130','Le Van Xuan','Father','Teacher','1974-06-15','0389123515','Quan 7, Ho Chi Minh'),
+('05630031','012345670131','Minh','Pham Van','2004-07-25','M','Kinh','Active','Good','2413031','KHMT6','Computer Science','BK002','P.401',1,'0389123516','minh.phamvan04@hcmut.edu.vn','Quan 8, Ho Chi Minh','075362520131','Pham Van Yen','Father','Accountant','1975-07-20','0389123517','Quan 8, Ho Chi Minh'),
+('05630032','012345670132','Nga','Nguyen Thi','2005-08-30','F','Kinh','Active','Good','2513032','CNTT6','Information Technology','BK002','P.401',1,'0389123518','nga.nguyenthi05@hcmut.edu.vn','Quan 9, Ho Chi Minh','075362520132','Nguyen Van Anh','Father','Engineer','1976-08-25','0389123519','Quan 9, Ho Chi Minh'),
+('05630033','012345670133','Oanh','Tran Thi','2003-09-05','F','Kinh','Active','Good','2313033','DTVT6','Electronics and Telecommunications Engineering','BK002','P.402',1,'0389123520','oanh.tranthi03@hcmut.edu.vn','Quan 10, Ho Chi Minh','075362520133','Tran Van Bao','Father','Doctor','1974-09-01','0389123521','Quan 10, Ho Chi Minh'),
+('05630034','012345670134','Phong','Le Van','2004-10-10','M','Kinh','Active','Good','2413034','CK6','Mechanical Engineering','BK002','P.402',1,'0389123522','phong.levan04@hcmut.edu.vn','Quan 11, Ho Chi Minh','075362520134','Le Van Chi','Father','Businessman','1975-10-05','0389123523','Quan 11, Ho Chi Minh'),
+('05630035','012345670135','Quang','Pham Van','2005-11-15','M','Kinh','Active','Good','2513035','D6','Electrical Engineering','BK002','P.403',1,'0389123524','quang.phamvan05@hcmut.edu.vn','Quan 12, Ho Chi Minh','075362520135','Pham Van Dung','Father','Teacher','1976-11-10','0389123525','Quan 12, Ho Chi Minh'),
+('05630036','012345670136','Rang','Nguyen Van','2003-12-20','M','Kinh','Active','Good','2313036','HTTT6','Information Security','BK002','P.403',1,'0389123526','rang.nguyenvan03@hcmut.edu.vn','Binh Thanh, Ho Chi Minh','075362520136','Nguyen Van Em','Father','Accountant','1974-12-15','0389123527','Binh Thanh, Ho Chi Minh'),
+('05630037','012345670137','Son','Tran Van','2004-01-25','M','Kinh','Active','Good','2413037','XD6','Civil Engineering','BK002','P.404',1,'0389123528','son.tranvan04@hcmut.edu.vn','Tan Binh, Ho Chi Minh','075362520137','Tran Van Giang','Father','Engineer','1975-01-20','0389123529','Tan Binh, Ho Chi Minh'),
+('05630038','012345670138','Tam','Le Thi','2005-02-28','F','Kinh','Active','Good','2513038','H6','Chemical Engineering','BK002','P.404',1,'0389123530','tam.lethi05@hcmut.edu.vn','Tan Phu, Ho Chi Minh','075362520138','Le Van Hoa','Father','Doctor','1976-02-23','0389123531','Tan Phu, Ho Chi Minh'),
+('05630039','012345670139','Uyen','Pham Thi','2003-03-05','F','Kinh','Active','Good','2313039','MT6','Environmental Engineering','BK003','P.102',1,'0389123532','uyen.phamthi03@hcmut.edu.vn','Phu Nhuan, Ho Chi Minh','075362520139','Pham Van Hung','Father','Businessman','1974-03-01','0389123533','Phu Nhuan, Ho Chi Minh'),
+('05630040','012345670140','Viet','Nguyen Van','2004-04-10','M','Kinh','Active','Good','2413040','DK6','Control and Automation Engineering','BK003','P.102',1,'0389123534','viet.nguyenvan04@hcmut.edu.vn','Go Vap, Ho Chi Minh','075362520140','Nguyen Van Lan','Father','Teacher','1975-04-05','0389123535','Go Vap, Ho Chi Minh'),
+('05630041','012345670141','Xuan','Tran Thi','2005-05-15','F','Kinh','Active','Good','2513041','QL6','Industrial Management','BK003','P.201',1,'0389123536','xuan.tranthi05@hcmut.edu.vn','Binh Tan, Ho Chi Minh','075362520141','Tran Van Minh','Father','Accountant','1976-05-10','0389123537','Binh Tan, Ho Chi Minh'),
+('05630042','012345670142','Yen','Le Thi','2003-06-20','F','Kinh','Active','Good','2313042','SCM6','Logistics and Supply Chain Management','BK003','P.201',1,'0389123538','yen.lethi03@hcmut.edu.vn','Thu Duc, Ho Chi Minh','075362520142','Le Van Nga','Father','Engineer','1974-06-15','0389123539','Thu Duc, Ho Chi Minh'),
+('05630043','012345670143','Anh','Pham Van','2004-07-25','M','Kinh','Active','Good','2413043','VL6','Materials Engineering','BK003','P.202',1,'0389123540','anh.phamvan04@hcmut.edu.vn','Nha Be, Ho Chi Minh','075362520143','Pham Van Oanh','Father','Doctor','1975-07-20','0389123541','Nha Be, Ho Chi Minh'),
+('05630044','012345670144','Bao','Nguyen Van','2005-08-30','M','Kinh','Active','Good','2513044','SH6','Biotechnology','BK003','P.202',1,'0389123542','bao.nguyenvan05@hcmut.edu.vn','Can Gio, Ho Chi Minh','075362520144','Nguyen Van Phong','Father','Businessman','1976-08-25','0389123543','Can Gio, Ho Chi Minh'),
+('05630045','012345670145','Chi','Tran Thi','2003-09-05','F','Kinh','Active','Good','2313045','KT6','Computer Engineering','BK003','P.203',1,'0389123544','chi.tranthi03@hcmut.edu.vn','Cu Chi, Ho Chi Minh','075362520145','Tran Van Quang','Father','Teacher','1974-09-01','0389123545','Cu Chi, Ho Chi Minh'),
+('05630046','012345670146','Dung','Le Van','2004-10-10','M','Kinh','Active','Good','2413046','KHMT7','Computer Science','BK003','P.203',1,'0389123546','dung.levan04@hcmut.edu.vn','Hoc Mon, Ho Chi Minh','075362520146','Le Van Rang','Father','Accountant','1975-10-05','0389123547','Hoc Mon, Ho Chi Minh'),
+('05630047','012345670147','Em','Pham Thi','2005-11-15','F','Kinh','Active','Good','2513047','CNTT7','Information Technology','BK003','P.301',1,'0389123548','em.phamthi05@hcmut.edu.vn','Quan 1, Ho Chi Minh','075362520147','Pham Van Son','Father','Engineer','1976-11-10','0389123549','Quan 1, Ho Chi Minh'),
+('05630048','012345670148','Giang','Nguyen Van','2003-12-20','M','Kinh','Active','Good','2313048','DTVT7','Electronics and Telecommunications Engineering','BK003','P.301',1,'0389123550','giang.nguyenvan03@hcmut.edu.vn','Quan 2, Ho Chi Minh','075362520148','Nguyen Van Tam','Father','Doctor','1974-12-15','0389123551','Quan 2, Ho Chi Minh'),
+('05630049','012345670149','Hoa','Tran Thi','2004-01-25','F','Kinh','Active','Good','2413049','CK7','Mechanical Engineering','BK003','P.302',1,'0389123552','hoa.tranthi04@hcmut.edu.vn','Quan 3, Ho Chi Minh','075362520149','Tran Van Uyen','Father','Businessman','1975-01-20','0389123553','Quan 3, Ho Chi Minh'),
+('05630050','012345670150','Hung','Le Van','2005-02-28','M','Kinh','Active','Good','2513050','D7','Electrical Engineering','BK003','P.302',1,'0389123554','hung.levan05@hcmut.edu.vn','Quan 4, Ho Chi Minh','075362520150','Le Van Viet','Father','Teacher','1976-02-23','0389123555','Quan 4, Ho Chi Minh'),
+('05630051','012345670151','Lan','Pham Thi','2003-03-05','F','Kinh','Active','Good','2313051','HTTT7','Information Security','BK003','P.303',1,'0389123556','lan.phamthi03@hcmut.edu.vn','Quan 5, Ho Chi Minh','075362520151','Pham Van Xuan','Father','Accountant','1974-03-01','0389123557','Quan 5, Ho Chi Minh'),
+('05630052','012345670152','Minh','Nguyen Van','2004-04-10','M','Kinh','Active','Good','2413052','XD7','Civil Engineering','BK003','P.303',1,'0389123558','minh.nguyenvan04@hcmut.edu.vn','Quan 6, Ho Chi Minh','075362520152','Nguyen Van Yen','Father','Engineer','1975-04-05','0389123559','Quan 6, Ho Chi Minh'),
+('05630053','012345670153','Nga','Tran Thi','2005-05-15','F','Kinh','Active','Good','2513053','H7','Chemical Engineering','BK003','P.401',1,'0389123560','nga.tranthi05@hcmut.edu.vn','Quan 7, Ho Chi Minh','075362520153','Tran Van Anh','Father','Doctor','1976-05-10','0389123561','Quan 7, Ho Chi Minh'),
+('05630054','012345670154','Oanh','Le Thi','2003-06-20','F','Kinh','Active','Good','2313054','MT7','Environmental Engineering','BK003','P.401',1,'0389123562','oanh.lethi03@hcmut.edu.vn','Quan 8, Ho Chi Minh','075362520154','Le Van Bao','Father','Businessman','1974-06-15','0389123563','Quan 8, Ho Chi Minh'),
+('05630055','012345670155','Phong','Pham Van','2004-07-25','M','Kinh','Active','Good','2413055','DK7','Control and Automation Engineering','BK003','P.402',1,'0389123564','phong.phamvan04@hcmut.edu.vn','Quan 9, Ho Chi Minh','075362520155','Pham Van Chi','Father','Teacher','1975-07-20','0389123565','Quan 9, Ho Chi Minh'),
+('05630056','012345670156','Quang','Nguyen Van','2005-08-30','M','Kinh','Active','Good','2513056','QL7','Industrial Management','BK003','P.402',1,'0389123566','quang.nguyenvan05@hcmut.edu.vn','Quan 10, Ho Chi Minh','075362520156','Nguyen Van Dung','Father','Accountant','1976-08-25','0389123567','Quan 10, Ho Chi Minh'),
+('05630057','012345670157','Rang','Tran Van','2003-09-05','M','Kinh','Active','Good','2313057','SCM7','Logistics and Supply Chain Management','BK003','P.403',1,'0389123568','rang.tranvan03@hcmut.edu.vn','Quan 11, Ho Chi Minh','075362520157','Tran Van Em','Father','Engineer','1974-09-01','0389123569','Quan 11, Ho Chi Minh'),
+('05630058','012345670158','Son','Le Van','2004-10-10','M','Kinh','Active','Good','2413058','VL7','Materials Engineering','BK003','P.403',1,'0389123570','son.levan04@hcmut.edu.vn','Quan 12, Ho Chi Minh','075362520158','Le Van Giang','Father','Doctor','1975-10-05','0389123571','Quan 12, Ho Chi Minh'),
+('05630059','012345670159','Tam','Pham Thi','2005-11-15','F','Kinh','Active','Good','2513059','SH7','Biotechnology','BK003','P.404',1,'0389123572','tam.phamthi05@hcmut.edu.vn','Binh Thanh, Ho Chi Minh','075362520159','Pham Van Hoa','Father','Businessman','1976-11-10','0389123573','Binh Thanh, Ho Chi Minh'),
+('05630060','012345670160','Uyen','Nguyen Thi','2003-12-20','F','Kinh','Active','Good','2313060','KT7','Computer Engineering','BK003','P.404',1,'0389123574','uyen.nguyenthi03@hcmut.edu.vn','Tan Binh, Ho Chi Minh','075362520160','Nguyen Van Hung','Father','Teacher','1974-12-15','0389123575','Tan Binh, Ho Chi Minh'),
+('05630061','012345670161','Viet','Tran Van','2004-01-25','M','Kinh','Active','Good','2413061','KHMT8','Computer Science','BK004','P.201',1,'0389123576','viet.tranvan04@hcmut.edu.vn','Tan Phu, Ho Chi Minh','075362520161','Tran Van Lan','Father','Accountant','1975-01-20','0389123577','Tan Phu, Ho Chi Minh'),
+('05630062','012345670162','Xuan','Le Thi','2005-02-28','F','Kinh','Active','Good','2513062','CNTT8','Information Technology','BK004','P.201',1,'0389123578','xuan.lethi05@hcmut.edu.vn','Phu Nhuan, Ho Chi Minh','075362520162','Le Van Minh','Father','Engineer','1976-02-23','0389123579','Phu Nhuan, Ho Chi Minh'),
+('05630063','012345670163','Yen','Pham Thi','2003-03-05','F','Kinh','Active','Good','2313063','DTVT8','Electronics and Telecommunications Engineering','BK004','P.202',1,'0389123580','yen.phamthi03@hcmut.edu.vn','Go Vap, Ho Chi Minh','075362520163','Pham Van Nga','Father','Doctor','1974-03-01','0389123581','Go Vap, Ho Chi Minh'),
+('05630064','012345670164','Anh','Nguyen Van','2004-04-10','M','Kinh','Active','Good','2413064','CK8','Mechanical Engineering','BK004','P.202',1,'0389123582','anh.nguyenvan04@hcmut.edu.vn','Binh Tan, Ho Chi Minh','075362520164','Nguyen Van Oanh','Father','Businessman','1975-04-05','0389123583','Binh Tan, Ho Chi Minh'),
+('05630065','012345670165','Bao','Tran Van','2005-05-15','M','Kinh','Active','Good','2513065','D8','Electrical Engineering','BK004','P.203',1,'0389123584','bao.tranvan05@hcmut.edu.vn','Thu Duc, Ho Chi Minh','075362520165','Tran Van Phong','Father','Teacher','1976-05-10','0389123585','Thu Duc, Ho Chi Minh'),
+('05630066','012345670166','Chi','Le Thi','2003-06-20','F','Kinh','Active','Good','2313066','HTTT8','Information Security','BK004','P.203',1,'0389123586','chi.lethi03@hcmut.edu.vn','Nha Be, Ho Chi Minh','075362520166','Le Van Quang','Father','Accountant','1974-06-15','0389123587','Nha Be, Ho Chi Minh'),
+('05630067','012345670167','Dung','Pham Van','2004-07-25','M','Kinh','Active','Good','2413067','XD8','Civil Engineering','BK004','P.301',1,'0389123588','dung.phamvan04@hcmut.edu.vn','Can Gio, Ho Chi Minh','075362520167','Pham Van Rang','Father','Engineer','1975-07-20','0389123589','Can Gio, Ho Chi Minh'),
+('05630068','012345670168','Em','Nguyen Thi','2005-08-30','F','Kinh','Active','Good','2513068','H8','Chemical Engineering','BK004','P.301',1,'0389123590','em.nguyenthi05@hcmut.edu.vn','Cu Chi, Ho Chi Minh','075362520168','Nguyen Van Son','Father','Doctor','1976-08-25','0389123591','Cu Chi, Ho Chi Minh'),
+('05630069','012345670169','Giang','Tran Van','2003-09-05','M','Kinh','Active','Good','2313069','MT8','Environmental Engineering','BK004','P.302',1,'0389123592','giang.tranvan03@hcmut.edu.vn','Hoc Mon, Ho Chi Minh','075362520169','Tran Van Tam','Father','Businessman','1974-09-01','0389123593','Hoc Mon, Ho Chi Minh'),
+('05630070','012345670170','Hoa','Le Van','2004-10-10','M','Kinh','Active','Good','2413070','DK8','Control and Automation Engineering','BK004','P.302',1,'0389123594','hoa.levan04@hcmut.edu.vn','Quan 1, Ho Chi Minh','075362520170','Le Van Uyen','Father','Teacher','1975-10-05','0389123595','Quan 1, Ho Chi Minh'),
+('05630071','012345670171','Hung','Pham Van','2005-11-15','M','Kinh','Active','Good','2513071','QL8','Industrial Management','BK004','P.303',1,'0389123596','hung.phamvan05@hcmut.edu.vn','Quan 2, Ho Chi Minh','075362520171','Pham Van Viet','Father','Accountant','1976-11-10','0389123597','Quan 2, Ho Chi Minh'),
+('05630072','012345670172','Lan','Nguyen Thi','2003-12-20','F','Kinh','Active','Good','2313072','SCM8','Logistics and Supply Chain Management','BK004','P.303',1,'0389123598','lan.nguyenthi03@hcmut.edu.vn','Quan 3, Ho Chi Minh','075362520172','Nguyen Van Xuan','Father','Engineer','1974-12-15','0389123599','Quan 3, Ho Chi Minh'),
+('05630073','012345670173','Minh','Tran Van','2004-01-25','M','Kinh','Active','Good','2413073','VL8','Materials Engineering','BK004','P.401',1,'0389123600','minh.tranvan04@hcmut.edu.vn','Quan 4, Ho Chi Minh','075362520173','Tran Van Yen','Father','Doctor','1975-01-20','0389123601','Quan 4, Ho Chi Minh'),
+('05630074','012345670174','Nga','Le Thi','2005-02-28','F','Kinh','Active','Good','2513074','SH8','Biotechnology','BK004','P.401',1,'0389123602','nga.lethi05@hcmut.edu.vn','Quan 5, Ho Chi Minh','075362520174','Le Van Anh','Father','Businessman','1976-02-23','0389123603','Quan 5, Ho Chi Minh'),
+('05630075','012345670175','Oanh','Pham Thi','2003-03-05','F','Kinh','Active','Good','2313075','KT8','Computer Engineering','BK004','P.402',1,'0389123604','oanh.phamthi03@hcmut.edu.vn','Quan 6, Ho Chi Minh','075362520175','Pham Van Bao','Father','Teacher','1974-03-01','0389123605','Quan 6, Ho Chi Minh'),
+('05630076','012345670176','Phong','Nguyen Van','2004-04-10','M','Kinh','Active','Good','2413076','KHMT9','Computer Science','BK004','P.402',1,'0389123606','phong.nguyenvan04@hcmut.edu.vn','Quan 7, Ho Chi Minh','075362520176','Nguyen Van Chi','Father','Accountant','1975-04-05','0389123607','Quan 7, Ho Chi Minh'),
+('05630077','012345670177','Quang','Tran Van','2005-05-15','M','Kinh','Active','Good','2513077','CNTT9','Information Technology','BK004','P.403',1,'0389123608','quang.tranvan05@hcmut.edu.vn','Quan 8, Ho Chi Minh','075362520177','Tran Van Dung','Father','Engineer','1976-05-10','0389123609','Quan 8, Ho Chi Minh'),
+('05630078','012345670178','Rang','Le Van','2003-06-20','M','Kinh','Active','Good','2313078','DTVT9','Electronics and Telecommunications Engineering','BK004','P.403',1,'0389123610','rang.levan03@hcmut.edu.vn','Quan 9, Ho Chi Minh','075362520178','Le Van Em','Father','Doctor','1974-06-15','0389123611','Quan 9, Ho Chi Minh'),
+('05630079','012345670179','Son','Pham Van','2004-07-25','M','Kinh','Active','Good','2413079','CK9','Mechanical Engineering','BK004','P.404',1,'0389123612','son.phamvan04@hcmut.edu.vn','Quan 10, Ho Chi Minh','075362520179','Pham Van Giang','Father','Businessman','1975-07-20','0389123613','Quan 10, Ho Chi Minh'),
+('05630080','012345670180','Tam','Nguyen Thi','2005-08-30','F','Kinh','Active','Good','2513080','D9','Electrical Engineering','BK004','P.404',1,'0389123614','tam.nguyenthi05@hcmut.edu.vn','Quan 11, Ho Chi Minh','075362520180','Nguyen Van Hoa','Father','Teacher','1976-08-25','0389123615','Quan 11, Ho Chi Minh'),
+('05630081','012345670181','Uyen','Tran Thi','2003-09-05','F','Kinh','Active','Good','2313081','HTTT9','Information Security','BK001','P.101',1,'0389123616','uyen.tranthi03@hcmut.edu.vn','Quan 12, Ho Chi Minh','075362520181','Tran Van Hung','Father','Accountant','1974-09-01','0389123617','Quan 12, Ho Chi Minh'),
+('05630082','012345670182','Viet','Le Van','2004-10-10','M','Kinh','Active','Good','2413082','XD9','Civil Engineering','BK001','P.101',1,'0389123618','viet.levan04@hcmut.edu.vn','Binh Thanh, Ho Chi Minh','075362520182','Le Van Lan','Father','Engineer','1975-10-05','0389123619','Binh Thanh, Ho Chi Minh'),
+('05630083','012345670183','Xuan','Pham Thi','2005-11-15','F','Kinh','Active','Good','2513083','H9','Chemical Engineering','BK001','P.102',1,'0389123620','xuan.phamthi05@hcmut.edu.vn','Tan Binh, Ho Chi Minh','075362520183','Pham Van Minh','Father','Doctor','1976-11-10','0389123621','Tan Binh, Ho Chi Minh'),
+('05630084','012345670184','Yen','Nguyen Thi','2003-12-20','F','Kinh','Active','Good','2313084','MT9','Environmental Engineering','BK001','P.102',1,'0389123622','yen.nguyenthi03@hcmut.edu.vn','Tan Phu, Ho Chi Minh','075362520184','Nguyen Van Nga','Father','Businessman','1974-12-15','0389123623','Tan Phu, Ho Chi Minh'),
+('05630085','012345670185','Anh','Tran Van','2004-01-25','M','Kinh','Active','Good','2413085','DK9','Control and Automation Engineering','BK002','P.101',1,'0389123624','anh.tranvan04@hcmut.edu.vn','Phu Nhuan, Ho Chi Minh','075362520185','Tran Van Oanh','Father','Teacher','1975-01-20','0389123625','Phu Nhuan, Ho Chi Minh'),
+('05630086','012345670186','Bao','Le Van','2005-02-28','M','Kinh','Active','Good','2513086','QL9','Industrial Management','BK002','P.101',1,'0389123626','bao.levan05@hcmut.edu.vn','Go Vap, Ho Chi Minh','075362520186','Le Van Phong','Father','Engineer','1976-02-23','0389123627','Go Vap, Ho Chi Minh'),
+('05630087','012345670187','Chi','Pham Thi','2003-03-05','F','Kinh','Active','Good','2313087','SCM9','Logistics and Supply Chain Management','BK002','P.102',1,'0389123628','chi.phamthi03@hcmut.edu.vn','Binh Tan, Ho Chi Minh','075362520187','Pham Van Quang','Father','Accountant','1974-03-01','0389123629','Binh Tan, Ho Chi Minh'),
+('05630088','012345670188','Dung','Nguyen Van','2004-04-10','M','Kinh','Active','Good','2413088','VL9','Materials Engineering','BK002','P.102',1,'0389123630','dung.nguyenvan04@hcmut.edu.vn','Thu Duc, Ho Chi Minh','075362520188','Nguyen Van Rang','Father','Businessman','1975-04-05','0389123631','Thu Duc, Ho Chi Minh'),
+('05630089','012345670189','Em','Tran Thi','2005-05-15','F','Kinh','Active','Good','2513089','SH9','Biotechnology','BK002','P.103',1,'0389123632','em.tranthi05@hcmut.edu.vn','Nha Be, Ho Chi Minh','075362520189','Tran Van Son','Father','Teacher','1976-05-10','0389123633','Nha Be, Ho Chi Minh'),
+('05630090','012345670190','Giang','Le Van','2003-06-20','M','Kinh','Active','Good','2313090','KT9','Computer Engineering','BK002','P.103',1,'0389123634','giang.levan03@hcmut.edu.vn','Can Gio, Ho Chi Minh','075362520190','Le Van Tam','Father','Engineer','1974-06-15','0389123635','Can Gio, Ho Chi Minh'),
+('05630091','012345670191','Hoa','Pham Thi','2004-07-25','F','Kinh','Active','Good','2413091','KHMT10','Computer Science','BK002','P.201',1,'0389123636','hoa.phamthi04@hcmut.edu.vn','Cu Chi, Ho Chi Minh','075362520191','Pham Van Uyen','Father','Doctor','1975-07-20','0389123637','Cu Chi, Ho Chi Minh'),
+('05630092','012345670192','Hung','Nguyen Van','2005-08-30','M','Kinh','Active','Good','2513092','CNTT10','Information Technology','BK002','P.201',1,'0389123638','hung.nguyenvan05@hcmut.edu.vn','Hoc Mon, Ho Chi Minh','075362520192','Nguyen Van Viet','Father','Businessman','1976-08-25','0389123639','Hoc Mon, Ho Chi Minh'),
+('05630093','012345670193','Lan','Tran Thi','2003-09-05','F','Kinh','Active','Good','2313093','DTVT10','Electronics and Telecommunications Engineering','BK002','P.202',1,'0389123640','lan.tranthi03@hcmut.edu.vn','Quan 1, Ho Chi Minh','075362520193','Tran Van Xuan','Father','Teacher','1974-09-01','0389123641','Quan 1, Ho Chi Minh'),
+('05630094','012345670194','Minh','Le Van','2004-10-10','M','Kinh','Active','Good','2413094','CK10','Mechanical Engineering','BK002','P.202',1,'0389123642','minh.levan04@hcmut.edu.vn','Quan 2, Ho Chi Minh','075362520194','Le Van Yen','Father','Accountant','1975-10-05','0389123643','Quan 2, Ho Chi Minh'),
+('05630095','012345670195','Nga','Pham Thi','2005-11-15','F','Kinh','Active','Good','2513095','D10','Electrical Engineering','BK002','P.203',1,'0389123644','nga.phamthi05@hcmut.edu.vn','Quan 3, Ho Chi Minh','075362520195','Pham Van Anh','Father','Engineer','1976-11-10','0389123645','Quan 3, Ho Chi Minh'),
+('05630096','012345670196','Oanh','Nguyen Thi','2003-12-20','F','Kinh','Active','Good','2313096','HTTT10','Information Security','BK002','P.203',1,'0389123646','oanh.nguyenthi03@hcmut.edu.vn','Quan 4, Ho Chi Minh','075362520196','Nguyen Van Bao','Father','Doctor','1974-12-15','0389123647','Quan 4, Ho Chi Minh'),
+('05630097','012345670197','Phong','Tran Van','2004-01-25','M','Kinh','Active','Good','2413097','XD10','Civil Engineering','BK002','P.204',1,'0389123648','phong.tranvan04@hcmut.edu.vn','Quan 5, Ho Chi Minh','075362520197','Tran Van Chi','Father','Businessman','1975-01-20','0389123649','Quan 5, Ho Chi Minh'),
+('05630098','012345670198','Quang','Le Van','2005-02-28','M','Kinh','Active','Good','2513098','H10','Chemical Engineering','BK002','P.204',1,'0389123650','quang.levan05@hcmut.edu.vn','Quan 6, Ho Chi Minh','075362520198','Le Van Dung','Father','Teacher','1976-02-23','0389123651','Quan 6, Ho Chi Minh'),
+('05630099','012345670199','Rang','Pham Van','2003-03-05','M','Kinh','Active','Good','2313099','MT10','Environmental Engineering','BK002','P.301',1,'0389123652','rang.phamvan03@hcmut.edu.vn','Quan 7, Ho Chi Minh','075362520199','Pham Van Em','Father','Engineer','1974-03-01','0389123653','Quan 7, Ho Chi Minh'),
+('05630100','012345670200','Son','Nguyen Van','2004-04-10','M','Kinh','Active','Good','2413100','DK10','Control and Automation Engineering','BK002','P.301',1,'0389123654','son.nguyenvan04@hcmut.edu.vn','Quan 8, Ho Chi Minh','075362520200','Nguyen Van Giang','Father','Accountant','1975-04-05','0389123655','Quan 8, Ho Chi Minh');
 UNLOCK TABLES;
 
 
@@ -234,50 +343,149 @@ INSERT INTO disciplinary_action (
   effective_from, effective_to, severity_level, status
 
 ) VALUES
+('DA001', 'Warning', 'Failure to comply with dorm rules',
+ '2024-12-12', '2024-12-13', NULL, 'low', 'completed'),
 
-('DA001', 'Cleaning Duty', 'Violation of quiet hours', '2023-03-15', '2023-03-16', '2023-06-16', 'low', 'cancelled'),
+('DA002', 'Cleaning Duty', 'Minor room cleanliness issue',
+ '2024-12-20', '2024-12-21', '2025-01-05', 'low', 'completed'),
 
-('DA002', 'Community Service', 'Violation of quiet hours', '2023-04-20', '2023-04-21', NULL, 'expulsion', 'active'),
+('DA003', 'Community Service', 'Disruptive behavior in common areas',
+ '2025-01-02', '2025-01-03', '2025-02-03', 'medium', 'completed'),
 
-('DA003', 'Expulsion', 'Smoking in non-designated areas', '2023-02-10', '2023-02-11', '2023-04-11', 'high', 'active'),
+('DA004', 'Warning', 'Unauthorized electrical appliance',
+ '2025-01-15', '2025-01-16', NULL, 'medium', 'active'),
 
-('DA004', 'Expulsion', 'Physical assault or fighting', '2023-01-05', '2023-01-06', NULL, 'expulsion', 'active'),
+('DA005', 'Dorm Cleaning', 'Failure to attend mandatory meeting',
+ '2025-01-28', '2025-01-29', '2025-02-12', 'low', 'completed'),
 
-('DA005', 'Yard Cleaning', 'Unauthorized guests', '2023-05-12', '2023-05-13', '2023-08-13', 'low', 'completed'),
+('DA006', 'Probation', 'Repeated noise violations',
+ '2025-02-10', '2025-02-11', '2025-07-11', 'medium', 'active'),
 
-('DA006', 'Classroom Setup', 'Physical assault or fighting', '2023-08-01', '2023-08-02', '2023-11-03', 'high', 'completed'),
+('DA007', 'Formal Warning', 'Unauthorized room change',
+ '2025-02-22', '2025-02-23', '2025-04-23', 'medium', 'completed'),
 
-('DA007', 'Dorm Cleaning', 'Physical assault or fighting', '2023-09-01', '2023-09-02', '2023-10-02', 'high', 'completed'),
+('DA008', 'Community Service', 'Misuse of dormitory facilities',
+ '2025-03-03', '2025-03-04', '2025-05-04', 'medium', 'active'),
 
-('DA008', 'Cafeteria Duty', 'Harassment or bullying', '2025-02-20', '2025-02-21', '2025-05-21', 'medium', 'active'),
+('DA009', 'Warning', 'Failing to follow hygiene rules',
+ '2025-03-14', '2025-03-15', NULL, 'low', 'active'),
 
-('DA009', 'Library Service', 'Unauthorized access to restricted areas', '2025-03-10', '2025-03-11', '2025-06-11', 'medium', 'active'),
+('DA010', 'Expulsion', 'Severe assault or endangerment',
+ '2025-03-28', '2025-03-29', NULL, 'high', 'pending'),
 
-('DA010', 'Hall Monitoring', 'Disregard for dormitory staff instructions', '2025-03-15', '2025-03-16', '2025-07-16', 'low', 'active');
+('DA011', 'Cleaning Duty', 'Violation of quiet hours',
+ '2025-01-05', '2025-01-06', '2025-01-20', 'low', 'completed'),
+('DA012', 'Warning', 'Late curfew return',
+ '2025-01-18', '2025-01-19', NULL, 'medium', 'completed'),
+('DA013', 'Community Service', 'Unauthorized guest in dormitory',
+ '2025-02-03', '2025-02-04', '2025-03-04', 'medium', 'completed'),
+('DA014', 'Dorm Cleaning', 'Noise complaint from neighbors',
+ '2025-02-22', '2025-02-23', '2025-03-23', 'low', 'completed'),
+('DA015', 'Library Service', 'Unauthorized access to restricted areas',
+ '2025-03-05', '2025-03-06', '2025-05-06', 'medium', 'active'),
+('DA016', 'Hall Monitoring', 'Disregard for dormitory staff instructions',
+ '2025-03-25', '2025-03-26', '2025-06-26', 'low', 'active'),
+('DA017', 'Community Service', 'Smoking in non-designated areas',
+ '2025-04-07', '2025-04-08', '2025-07-08', 'medium', 'active'),
+('DA018', 'Formal Warning', 'Harassment or bullying',
+ '2025-04-19', '2025-04-20', '2025-10-20', 'high', 'active'),
+('DA019', 'Dorm Cleaning', 'Room cleanliness violation',
+ '2025-05-02', '2025-05-03', '2025-05-17', 'low', 'completed'),
+('DA020', 'Yard Cleaning', 'Improper trash disposal',
+ '2025-05-21', '2025-05-22', '2025-06-22', 'low', 'completed'),
+('DA021', 'Community Service', 'Absence without notice',
+ '2025-06-04', '2025-06-05', '2025-07-05', 'medium', 'completed'),
+('DA022', 'Warning', 'Repeated late curfew return',
+ '2025-06-23', '2025-06-24', NULL, 'medium', 'active'),
+('DA023', 'Probation', 'Repeated minor violations',
+ '2025-07-06', '2025-07-07', '2025-11-07', 'medium', 'active'),
+('DA024', 'Expulsion', 'Physical assault or fighting',
+ '2025-07-24', '2025-07-25', NULL, 'high', 'pending'),
+('DA025', 'Dorm Cleaning', 'Violation of quiet hours',
+ '2025-08-09', '2025-08-10', '2025-08-24', 'low', 'completed'),
+('DA026', 'Community Service', 'Unauthorized guest in dormitory',
+ '2025-08-27', '2025-08-28', '2025-10-28', 'medium', 'active'),
+('DA027', 'Formal Warning', 'Harassment or bullying',
+ '2025-09-08', '2025-09-09', '2025-12-09', 'high', 'active'),
+('DA028', 'Cleaning Duty', 'Noise complaint from neighbors',
+ '2025-09-26', '2025-09-27', '2025-10-11', 'low', 'completed'),
+('DA029', 'Probation', 'Repeated late curfew return',
+ '2025-10-11', '2025-10-12', '2026-01-12', 'medium', 'active'),
+('DA030', 'Expulsion', 'Serious property damage',
+ '2025-11-05', '2025-11-06', NULL, 'high', 'pending'),
 
-INSERT INTO student_discipline (action_id, sssn) VALUES
+-- Additional violations for BK001 in date range 2025-03-04 to 2025-11-23
+('DA031', 'Warning', 'Late curfew return',
+ '2025-03-15', '2025-03-16', NULL, 'low', 'completed'),
+('DA032', 'Community Service', 'Noise disturbance',
+ '2025-04-10', '2025-04-11', '2025-05-11', 'medium', 'completed'),
+('DA033', 'Dorm Cleaning', 'Room cleanliness violation',
+ '2025-05-20', '2025-05-21', '2025-06-04', 'low', 'completed'),
+('DA034', 'Formal Warning', 'Unauthorized guest',
+ '2025-06-15', '2025-06-16', '2025-09-16', 'medium', 'active'),
+('DA035', 'Probation', 'Repeated violations',
+ '2025-07-10', '2025-07-11', '2025-12-11', 'medium', 'active'),
+('DA036', 'Warning', 'Violation of quiet hours',
+ '2025-08-05', '2025-08-06', NULL, 'low', 'completed'),
+('DA037', 'Community Service', 'Improper trash disposal',
+ '2025-09-12', '2025-09-13', '2025-10-13', 'low', 'completed'),
+('DA038', 'Expulsion', 'Serious misconduct',
+ '2025-10-20', '2025-10-21', NULL, 'high', 'pending');
 
-('DA001', '05620513'),
+LOCK TABLES `student_discipline` WRITE;
 
-('DA002', '05620514'),
+INSERT INTO `student_discipline` (action_id, sssn) VALUES
+-- BK001: 8 violations (05630001-05630017, 05630081-05630084)
+('DA001','05630001'),
+('DA002','05630003'),
+('DA003','05630005'),
+('DA004','05630007'),
+('DA005','05630010'),
+('DA006','05630012'),
+('DA007','05630015'),
+('DA008','05630017'),
 
-('DA003', '05620515'),
+-- BK002: 7 violations (05630018-05630038, 05630085-05630100)
+('DA009','05630018'),
+('DA010','05630020'),
+('DA011','05630022'),
+('DA012','05630025'),
+('DA013','05630028'),
+('DA014','05630031'),
+('DA015','05630034'),
 
-('DA004', '05620516'),
+-- BK003: 8 violations (05630039-05630060)
+('DA016','05630039'),
+('DA017','05630041'),
+('DA018','05630043'),
+('DA019','05630045'),
+('DA020','05630047'),
+('DA021','05630050'),
+('DA022','05630052'),
+('DA023','05630055'),
 
-('DA005', '05620517'),
+-- BK004: 7 violations (05630061-05630080)
+('DA024','05630061'),
+('DA025','05630063'),
+('DA026','05630065'),
+('DA027','05630068'),
+('DA028','05630071'),
+('DA029','05630074'),
+('DA030','05630077'),
 
-('DA006', '05620518'),
+-- Additional violations for BK001 in date range 2025-03-04 to 2025-11-23
+('DA031','05630002'),
+('DA032','05630004'),
+('DA033','05630006'),
+('DA034','05630008'),
+('DA035','05630011'),
+('DA036','05630013'),
+('DA037','05630014'),
+('DA038','05630016');
 
-('DA007', '05620519'),
+UNLOCK TABLES;
 
-('DA008', '05620520'),
-
-('DA009', '05620521'),
-
-('DA010', '05620522');
-
-
+UNLOCK TABLES;
 
 
 DELIMITER ;;
