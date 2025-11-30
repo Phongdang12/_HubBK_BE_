@@ -107,7 +107,13 @@ export const RoomStudentMutationBody = z.object({
     .trim()
     .regex(/^\d{8}$/, { message: STUDENT_NOT_FOUND_ERROR }),
 });
+export const TransferStudentBody = z.object({
+  sssn: z.string().trim().regex(/^\d{8}$/, { message: 'SSN không hợp lệ' }),
+  targetBuildingId: z.string().min(1).max(5),
+  targetRoomId: z.string().min(1).max(5),
+});
 
+export type TransferStudentBodyDto = z.infer<typeof TransferStudentBody>;
 export type BuildingIdParamsDto = z.infer<typeof BuildingIdParams>;
 export type RoomCheckParamsDto = z.infer<typeof RoomCheckParams>;
 export type RoomStudentParamsDto = z.infer<typeof RoomStudentParams>;

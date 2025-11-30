@@ -1,5 +1,5 @@
 export interface Student {
-  new_ssn: string;
+  new_ssn?: string;
   cccd: string;
   ssn: string;
   guardian_list?: any[]; // Thêm trường guardian_list để chứa danh sách người thân

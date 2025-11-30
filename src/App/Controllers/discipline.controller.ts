@@ -65,13 +65,13 @@ function validateActionIdParam(res: Response, params: Request['params']) {
   return parsed.data.action_id;
 }
 
-async function ensureStudentExists(res: Response, sssn: string) {
-  const exists = await service.doesStudentExist(sssn);
+async function ensureStudentExists(res: Response, student_id: string) {
+  const exists = await service.doesStudentExist(student_id);
   if (!exists) {
     respondWithFieldErrors(
       res,
-      [{ field: 'sssn', message: STUDENT_CODE_ERROR_MESSAGE }],
-      { sssn }
+      [{ field: 'student_id', message: STUDENT_CODE_ERROR_MESSAGE }],
+      { student_id }
     );
     return false;
   }
@@ -122,22 +122,27 @@ export async function createDiscipline(req: Request, res: Response) {
     if (!parsedBody) return;
     const payload = normalisePayload(parsedBody);
 
-    const exists = await service.getDisciplineById(payload.action_id);
-    if (exists) {
-      respondWithFieldErrors(
-        res,
-        [{ field: 'action_id', message: ACTION_ID_ERROR_MESSAGE }],
-        { action_id: payload.action_id },
-        409
-      );
-      return;
+    if (payload.action_id) {
+      const exists = await service.getDisciplineById(payload.action_id);
+      if (exists) {
+        respondWithFieldErrors(
+          res,
+          [{ field: 'action_id', message: ACTION_ID_ERROR_MESSAGE }],
+          { action_id: payload.action_id },
+          409
+        );
+        return;
+      }
     }
 
-    const studentIsValid = await ensureStudentExists(res, payload.sssn);
+    const studentIsValid = await ensureStudentExists(res, payload.student_id);
     if (!studentIsValid) return;
 
     const createPayload: service.DisciplineCreateDTO = {
       ...payload,
+      // Thêm dòng này để đảm bảo action_id luôn là string (dù service sẽ tự sinh ID mới và bỏ qua giá trị này)
+      action_id: payload.action_id || '', 
+      
       severity_level: payload.severity_level as service.DisciplineCreateDTO['severity_level'],
       status: payload.status as service.DisciplineCreateDTO['status'],
     };
@@ -170,7 +175,7 @@ export async function updateDiscipline(req: Request, res: Response) {
       return;
     }
 
-    const studentIsValid = await ensureStudentExists(res, parsedBody.sssn);
+    const studentIsValid = await ensureStudentExists(res, parsedBody.student_id);
     if (!studentIsValid) return;
 
     const updatePayload: service.DisciplineUpdateDTO = {
@@ -192,6 +197,23 @@ export async function deleteDiscipline(req: Request, res: Response) {
     if (!action_id) return;
     const result = await service.deleteDiscipline(action_id);
     res.json(result);
+  } catch (err) {
+    handleError(res, err);
+  }
+}
+
+export async function getDisciplinesByStudent(req: Request, res: Response) {
+  try {
+    // Lấy student_id từ URL (thay vì sssn)
+    const { student_id } = req.params; 
+    
+    if (!student_id) {
+      return res.status(400).json({ error: 'Missing Student ID parameter' });
+    }
+
+    // Gọi hàm service mới
+    const data = await service.getDisciplinesByStudentId(student_id);
+    res.json(data);
   } catch (err) {
     handleError(res, err);
   }
