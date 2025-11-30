@@ -27,7 +27,12 @@ roomsRouter.get(
   validateAll({ params: RoomCheckParams }),
   roomsController.getRoomDetail.bind(roomsController)
 );
-
+roomsRouter.post(
+  '/transfer',
+  verifyToken,
+  // validateAll(...) nếu bạn muốn validate middleware ở đây
+  roomsController.transferStudent.bind(roomsController)
+);
 // --- Kiểm tra 1 phòng có dưới mức hay không ---
 roomsRouter.get(
   '/underoccupied/:buildingId/:roomId',

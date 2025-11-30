@@ -4,6 +4,7 @@ import * as ctrl from '../App/Controllers/discipline.controller';
 const router = express.Router();
 
 router.get('/', ctrl.listDisciplines);
+router.get('/student/:student_id', ctrl.getDisciplinesByStudent);
 router.get('/:action_id', ctrl.getDiscipline);
 router.post('/', ctrl.createDiscipline);
 router.put('/:action_id', ctrl.updateDiscipline);

@@ -12,7 +12,7 @@ import {
 } from '../Validations/rooms.validator';
 import { RoomsService } from '@/Services/rooms.service';
 import { QueryError } from 'mysql2';
-
+import { TransferStudentBody, TransferStudentBodyDto } from '@/App/Validations/rooms.validator';
 export class RoomsController {
   private roomsService: RoomsService;
 
@@ -45,7 +45,7 @@ export class RoomsController {
       fieldErrors,
     });
   }
-
+  
   private static mapIssues(issues: ZodIssue[]) {
     return issues.map((issue) => ({
       field: issue.path?.[0]?.toString() || 'form',
@@ -121,14 +121,14 @@ export class RoomsController {
     try {
       const { buildingId, roomId } = req.params;
 
-      // Trực tiếp lấy object Room từ service
       const room = await this.roomsService.getRoomDetail(buildingId, roomId);
-      console.log('Params received:', buildingId, roomId);
+      
       if (!room) {
         res.status(404).json({ message: 'Room not found' });
         return;
       }
-      console.log('Room from DB:', room);
+
+      // ✅ Trả về object chuẩn, đảm bảo khớp với Interface Room ở Frontend
       const formatted = {
         building_id: room.building_id,
         room_id: room.room_id,
@@ -137,6 +137,7 @@ export class RoomsController {
         occupancy_rate: room.occupancy_rate,
         rental_price: room.rental_price,
         room_status: room.room_status,
+        room_gender: room.room_gender // ✅ Đừng quên dòng này
       };
 
       res.status(200).json(formatted);
@@ -247,7 +248,31 @@ export class RoomsController {
       res.status(500).json({ success: false, message: mysqlErrorMessage });
     }
   }
+  private parseTransferBody(res: Response, rawBody: unknown): TransferStudentBodyDto | null {
+    const parsed = TransferStudentBody.safeParse(rawBody);
+    if (!parsed.success) {
+      RoomsController.respondWithFieldErrors(res, RoomsController.mapIssues(parsed.error.issues));
+      return null;
+    }
+    return parsed.data;
+  }
 
+  // API Chuyển phòng
+  async transferStudent(req: Request, res: Response): Promise<void> {
+    const parsedBody = this.parseTransferBody(res, req.body);
+    if (!parsedBody) return;
+
+    try {
+      await this.roomsService.transferStudent(
+        parsedBody.sssn,
+        parsedBody.targetBuildingId,
+        parsedBody.targetRoomId
+      );
+      res.status(200).json({ message: 'Chuyển phòng thành công!' });
+    } catch (error) {
+      this.handleServiceError(res, error);
+    }
+  }
   async getUnderoccupiedRoomsByBuildingId(
     req: Request<BuildingIdParamsDto>,
     res: Response,

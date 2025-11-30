@@ -6,4 +6,5 @@ export interface Room {
   occupancy_rate: number;    // <-- NÊN là number, MySQL DECIMAL → FE nhận number
   rental_price: number;      // <-- Cũng nên là number
   room_status: 'Available' | 'Occupied' | 'Under Maintenance';
+  room_gender: 'Male' | 'Female' | 'Co-ed';
 }
