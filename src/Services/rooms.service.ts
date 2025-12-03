@@ -157,15 +157,37 @@ export class RoomsService {
     const conn = await pool.getConnection();
     try {
       await conn.beginTransaction();
+
+      // Lock dữ liệu phòng và sinh viên
       const room = await this.getRoomForUpdate(conn, buildingId, roomId);
-      if (room.current_num_of_students >= room.max_num_of_students) throw { status: 400, message: 'Phòng đã đầy.' };
+      if (room.current_num_of_students >= room.max_num_of_students) {
+        throw { status: 400, message: 'Phòng đã đầy.' };
+      }
+
       const student = await this.getStudentForUpdate(conn, sssn);
-      if (student.building_id && student.room_id) throw { status: 400, message: 'Sinh viên đang ở phòng khác.' };
+      if (student.building_id && student.room_id) {
+        throw { status: 400, message: 'Sinh viên đang ở phòng khác.' };
+      }
+
+      // Kiểm tra giới tính
       await this.checkRoomGenderCompatibility(conn, buildingId, roomId, student.sex);
+
+      // Cập nhật sinh viên
       await conn.query('UPDATE student SET building_id = ?, room_id = ? WHERE sssn = ?', [buildingId, roomId, sssn]);
+
+      // Tính toán chỉ số mới cho phòng
       const newCurrent = room.current_num_of_students + 1;
       const occupancy = this.calculateOccupancy(newCurrent, room.max_num_of_students);
-      await conn.query('UPDATE living_room SET current_num_of_students = ?, occupancy_rate = ? WHERE building_id = ? AND room_id = ?', [newCurrent, occupancy, buildingId, roomId]);
+      
+      // LOGIC MỚI: Nếu đầy thì chuyển thành 'Occupied', ngược lại là 'Available'
+      const newStatus = newCurrent >= room.max_num_of_students ? 'Occupied' : 'Available';
+
+      // Cập nhật phòng (bao gồm cả room_status)
+      await conn.query(
+        'UPDATE living_room SET current_num_of_students = ?, occupancy_rate = ?, room_status = ? WHERE building_id = ? AND room_id = ?', 
+        [newCurrent, occupancy, newStatus, buildingId, roomId]
+      );
+
       await conn.commit();
       return this.getRoomDetail(buildingId, roomId);
     } catch (error) {
@@ -180,22 +202,46 @@ export class RoomsService {
     const conn = await pool.getConnection();
     try {
       await conn.beginTransaction();
+
+      // 1. Lấy thông tin cần thiết và khóa dòng (Locking)
       const student = await this.getStudentForUpdate(conn, sssn);
       const oldBuildingId = student.building_id;
       const oldRoomId = student.room_id;
+
       if (!oldBuildingId || !oldRoomId) throw { status: 400, message: 'Sinh viên chưa có phòng.' };
       if (oldBuildingId === targetBuildingId && oldRoomId === targetRoomId) throw { status: 400, message: 'Sinh viên đang ở phòng này rồi.' };
+
       const targetRoom = await this.getRoomForUpdate(conn, targetBuildingId, targetRoomId);
       if (targetRoom.current_num_of_students >= targetRoom.max_num_of_students) throw { status: 400, message: `Phòng đích ${targetRoomId} đã đầy.` };
+      
       await this.checkRoomGenderCompatibility(conn, targetBuildingId, targetRoomId, student.sex);
       const oldRoom = await this.getRoomForUpdate(conn, oldBuildingId, oldRoomId);
+
+      // 2. Cập nhật bảng STUDENT
       await conn.query('UPDATE student SET building_id = ?, room_id = ? WHERE sssn = ?', [targetBuildingId, targetRoomId, sssn]);
+
+      // 3. Cập nhật PHÒNG CŨ (Nơi sinh viên rời đi)
       const oldCurrent = Math.max(oldRoom.current_num_of_students - 1, 0);
       const oldOccupancy = this.calculateOccupancy(oldCurrent, oldRoom.max_num_of_students);
-      await conn.query('UPDATE living_room SET current_num_of_students = ?, occupancy_rate = ? WHERE building_id = ? AND room_id = ?', [oldCurrent, oldOccupancy, oldBuildingId, oldRoomId]);
+      // Logic: Nếu sinh viên rời đi, phòng chắc chắn sẽ "Available" (trừ khi max=0)
+      const oldStatus = oldCurrent < oldRoom.max_num_of_students ? 'Available' : 'Occupied';
+
+      await conn.query(
+        'UPDATE living_room SET current_num_of_students = ?, occupancy_rate = ?, room_status = ? WHERE building_id = ? AND room_id = ?', 
+        [oldCurrent, oldOccupancy, oldStatus, oldBuildingId, oldRoomId]
+      );
+
+      // 4. Cập nhật PHÒNG MỚI (Nơi sinh viên đến)
       const newCurrent = targetRoom.current_num_of_students + 1;
       const newOccupancy = this.calculateOccupancy(newCurrent, targetRoom.max_num_of_students);
-      await conn.query('UPDATE living_room SET current_num_of_students = ?, occupancy_rate = ? WHERE building_id = ? AND room_id = ?', [newCurrent, newOccupancy, targetBuildingId, targetRoomId]);
+      // Logic: Nếu đầy thì set thành 'Occupied', chưa đầy thì 'Available'
+      const newStatus = newCurrent >= targetRoom.max_num_of_students ? 'Occupied' : 'Available';
+
+      await conn.query(
+        'UPDATE living_room SET current_num_of_students = ?, occupancy_rate = ?, room_status = ? WHERE building_id = ? AND room_id = ?', 
+        [newCurrent, newOccupancy, newStatus, targetBuildingId, targetRoomId]
+      );
+
       await conn.commit();
     } catch (error) {
       await conn.rollback();
@@ -209,13 +255,31 @@ export class RoomsService {
     const conn = await pool.getConnection();
     try {
       await conn.beginTransaction();
+
       const room = await this.getRoomForUpdate(conn, buildingId, roomId);
       const student = await this.getStudentForUpdate(conn, sssn);
-      if (student.building_id !== buildingId || student.room_id !== roomId) throw { status: 400, message: STUDENT_NOT_IN_ROOM_ERROR };
+
+      if (student.building_id !== buildingId || student.room_id !== roomId) {
+        throw { status: 400, message: STUDENT_NOT_IN_ROOM_ERROR };
+      }
+
+      // Xóa thông tin phòng khỏi sinh viên
       await conn.query('UPDATE student SET building_id = NULL, room_id = NULL WHERE sssn = ?', [sssn]);
+
+      // Tính toán chỉ số mới cho phòng
       const newCurrent = Math.max(room.current_num_of_students - 1, 0);
       const occupancy = this.calculateOccupancy(newCurrent, room.max_num_of_students);
-      await conn.query('UPDATE living_room SET current_num_of_students = ?, occupancy_rate = ? WHERE building_id = ? AND room_id = ?', [newCurrent, occupancy, buildingId, roomId]);
+
+      // LOGIC MỚI: Khi xóa bớt người, phòng thường sẽ có chỗ trống -> 'Available'
+      // Kiểm tra kỹ: Nếu vẫn đầy (trường hợp max=0 lạ lùng nào đó) thì giữ Occupied, còn lại là Available
+      const newStatus = newCurrent < room.max_num_of_students ? 'Available' : 'Occupied';
+
+      // Cập nhật phòng (bao gồm cả room_status)
+      await conn.query(
+        'UPDATE living_room SET current_num_of_students = ?, occupancy_rate = ?, room_status = ? WHERE building_id = ? AND room_id = ?', 
+        [newCurrent, occupancy, newStatus, buildingId, roomId]
+      );
+
       await conn.commit();
       return this.getRoomDetail(buildingId, roomId);
     } catch (error) {
