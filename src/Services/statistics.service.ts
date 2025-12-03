@@ -135,7 +135,7 @@ export class StatisticsService {
     if (buildingId) {
       disciplineWhere += ` AND EXISTS (
         SELECT 1 FROM student_discipline sd
-        JOIN student s ON sd.sssn = s.sssn
+        JOIN student s ON sd.student_id = s.student_id
         WHERE sd.action_id = da.action_id AND s.building_id = ?
       )`;
       disciplineParams.push(buildingId);
@@ -276,7 +276,7 @@ export class StatisticsService {
         // Filter by specific building: need to join to student table
         joinClause = `
           INNER JOIN student_discipline sd ON da.action_id = sd.action_id
-          INNER JOIN student s ON sd.sssn = s.sssn`;
+          INNER JOIN student s ON sd.student_id = s.student_id`;
         whereConditions.push('s.building_id = ?');
         params.push(normalizedBuildingId);
       } else {
@@ -408,7 +408,7 @@ export class StatisticsService {
         // Filter by specific building: need to join to student table
         joinClause = `
           INNER JOIN student_discipline sd ON da.action_id = sd.action_id
-          INNER JOIN student s ON sd.sssn = s.sssn`;
+          INNER JOIN student s ON sd.student_id = s.student_id`;
         whereConditions.push('s.building_id = ?');
         params.push(normalizedBuildingId);
       } else {

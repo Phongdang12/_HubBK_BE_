@@ -326,7 +326,7 @@ export class StatisticsController {
         // Filter by specific building: join to student table
         joinClause = `
           INNER JOIN student_discipline sd ON da.action_id = sd.action_id
-          INNER JOIN student s ON sd.sssn = s.sssn`;
+          INNER JOIN student s ON sd.student_id = s.student_id`;
         whereConditions.push('s.building_id = ?');
         params.push(normalizedBuildingId);
       } else {
@@ -377,7 +377,12 @@ export class StatisticsController {
         ${whereClause}
       `;
 
-      // Main query - get distinct disciplines with student SSN
+      // Main query - get distinct disciplines with student info
+      // If we need sssn, we need to join with student table
+      const studentJoin = normalizedBuildingId 
+        ? '' // Already joined above
+        : `LEFT JOIN student s ON sd.student_id = s.student_id`;
+      
       const query = `
         SELECT DISTINCT
           da.action_id,
@@ -388,9 +393,11 @@ export class StatisticsController {
           da.effective_to,
           da.severity_level,
           da.status,
-          sd.sssn
+          COALESCE(s.sssn, '') as sssn,
+          sd.student_id
         FROM disciplinary_action da
         ${joinClause}
+        ${normalizedBuildingId ? '' : studentJoin}
         ${whereClause}
         ORDER BY da.decision_date DESC
         LIMIT ? OFFSET ?
