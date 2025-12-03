@@ -11,7 +11,7 @@ export const STATUS_ERROR_MESSAGE =
   'Trạng thái không hợp lệ. Vui lòng chọn: Active, Pending, Completed, Cancelled.';
 export const REASON_ERROR_MESSAGE = 'Lý do phải từ 10 đến 500 ký tự.';
 export const DECISION_DATE_ERROR_MESSAGE =
-  'Ngày quyết định không hợp lệ.';
+  "Ngày quyết định không hợp lệ. Ngày quyết định không được là ngày trong tương lai.";
 export const EFFECTIVE_FROM_ERROR_MESSAGE =
   'Ngày bắt đầu không hợp lệ.';
 export const EFFECTIVE_TO_ERROR_MESSAGE =

@@ -8,12 +8,17 @@ import {
   STUDENT_GENERAL_ERROR_MESSAGE,
   STUDENT_ID_ERROR_MESSAGE,
   STUDENT_SSN_ERROR_MESSAGE,
+  SsnParamDto,
 } from '@/App/Validations/Students.validator';
-import { SsnParamDto } from '@/App/Validations/Students.validator';
 
 type FieldError = { field: string; message: string; };
 
 class StudentController {
+  
+  // =================================================================
+  // 🛠️ HELPER FUNCTIONS (XỬ LÝ LỖI & VALIDATION)
+  // =================================================================
+
   private static logValidationError(message: string, value?: unknown) {
     const printable = value === undefined || value === null || value === '' ? 'Không có' : JSON.stringify(value);
     console.error(`Lỗi: ${message} Giá trị được chọn: ${printable}.`);
@@ -39,7 +44,56 @@ class StudentController {
     }
     return parsed.data;
   }
-static async getStudentsWithoutRoom(req: Request, res: Response) {
+
+  /**
+   * ⚡ XỬ LÝ LỖI DATABASE (MYSQL)
+   * Chuyển lỗi "Duplicate entry" thành lỗi hiển thị trên UI
+   */
+  private static handleDatabaseError(res: Response, error: any, payload: any) {
+    // Mã lỗi 1062 là Duplicate Entry (Trùng lặp dữ liệu unique)
+    if (error.code === 'ER_DUP_ENTRY' || error.errno === 1062) {
+      const message = error.message || '';
+
+      // 1. Kiểm tra trùng CCCD
+      // MySQL trả về dạng: Duplicate entry '012345...' for key 'student.cccd'
+      if (message.includes('cccd')) {
+        StudentController.respondWithFieldErrors(
+          res,
+          [{ field: 'cccd', message: 'Số CCCD này đã tồn tại trong hệ thống.' }], 
+          payload, 
+          409 // Conflict Status
+        );
+        return;
+      }
+
+      // 2. Kiểm tra trùng MSSV
+      if (message.includes('student_id')) {
+        StudentController.respondWithFieldErrors(
+          res,
+          [{ field: 'student_id', message: 'Mã số sinh viên này đã tồn tại.' }],
+          payload,
+          409
+        );
+        return;
+      }
+      
+      // 3. Nếu trùng SSN (thường do hệ thống sinh lỗi hoặc race condition)
+      if (message.includes('PRIMARY') || message.includes('sssn')) {
+         res.status(500).json({ message: 'Lỗi hệ thống: Trùng mã định danh SSN nội bộ. Vui lòng thử lại.' });
+         return;
+      }
+    }
+
+    // Các lỗi khác không xác định (Lỗi SQL cú pháp, mất kết nối, v.v.)
+    console.error('Database Unexpected Error:', error);
+    res.status(500).json({ message: 'Lỗi máy chủ nội bộ.', detail: error.message });
+  }
+
+  // =================================================================
+  // 🚀 MAIN HANDLERS
+  // =================================================================
+
+  static async getStudentsWithoutRoom(req: Request, res: Response) {
     try {
       const data = await StudentService.getStudentsWithoutRoom();
       res.json(data);
@@ -48,6 +102,7 @@ static async getStudentsWithoutRoom(req: Request, res: Response) {
       res.status(500).json({ message: 'Failed to fetch available students' });
     }
   }
+
   static async getStudent(req: Request, res: Response) {
     try {
       const students: Student[] = await StudentService.getAllStudents();
@@ -114,47 +169,58 @@ static async getStudentsWithoutRoom(req: Request, res: Response) {
     }
   }
 
+  // --- CREATE STUDENT (Đã sửa để bắt lỗi DB) ---
   static async createStudent(req: Request, res: Response) {
+    let payload;
     try {
-      const payload = StudentController.parsePayload(res, req.body, CreateStudentBody);
+      payload = StudentController.parsePayload(res, req.body, CreateStudentBody);
       if (!payload) return;
+
+      // Check trùng student_id thủ công (Optional - DB cũng sẽ check lại)
       if (await StudentService.doesStudentIdExist(payload.student_id)) {
         StudentController.respondWithFieldErrors(res, [{ field: 'student_id', message: STUDENT_ID_ERROR_MESSAGE }], { student_id: payload.student_id }, 409);
         return;
       }
+
       await StudentService.insertStudent(payload as Student);
       res.status(201).json({ message: 'Student created successfully' });
     } catch (error) {
-      const mysqlErrorMessage = (error as QueryError).message || 'Unknown error';
-      console.error('Unexpected error when creating student:', error);
-      res.status(500).json({ success: false, message: mysqlErrorMessage });
+      // Gọi hàm xử lý lỗi DB tập trung
+      StudentController.handleDatabaseError(res, error, payload);
     }
   }
 
+  // --- UPDATE STUDENT (Đã sửa để bắt lỗi DB) ---
   static async put(req: Request<SsnParamDto>, res: Response): Promise<void> {
+    let payload;
     try {
       const { ssn } = req.params;
-      const payload = StudentController.parsePayload(res, req.body, UpdateStudentBody);
+      payload = StudentController.parsePayload(res, req.body, UpdateStudentBody);
       if (!payload) return;
+
       if (payload.ssn !== ssn) {
         StudentController.respondWithFieldErrors(res, [{ field: 'ssn', message: STUDENT_SSN_ERROR_MESSAGE }], { ssn: payload.ssn });
         return;
       }
-      if (await StudentService.doesStudentIdExist(payload.student_id, ssn)) {
-        StudentController.respondWithFieldErrors(res, [{ field: 'student_id', message: STUDENT_ID_ERROR_MESSAGE }], { student_id: payload.student_id }, 409);
-        return;
-      }
+
+      // Check logic nghiệp vụ (ví dụ: điểm rèn luyện thấp, v.v...)
+      // Các logic này ném ra Error thông thường, không phải QueryError
       await StudentService.updateStudent(payload as Student);
+      
       res.status(200).json({ message: 'Student updated successfully' });
     } catch (error: any) {
-      // Bắt lỗi logic từ Service (ví dụ: điểm rèn luyện thấp)
-      const message = error.message || 'Unknown error';
-      console.error('Update student error:', message);
-      res.status(400).json({ success: false, message });
+      // Phân biệt lỗi logic (400) và lỗi DB (Duplicate/SQL Error)
+      if (error.message && !error.code && !error.errno) {
+         // Lỗi logic từ Service (ví dụ: Không đủ điểm rèn luyện, còn phòng...)
+         res.status(400).json({ success: false, message: error.message });
+         return;
+      }
+
+      // Gọi hàm xử lý lỗi DB
+      StudentController.handleDatabaseError(res, error, payload);
     }
   }
 
-  // --- SỬA HÀM DELETE ---
   static async delete(req: Request, res: Response): Promise<void> {
     try {
       const ssn = req.params.ssn;
@@ -162,9 +228,7 @@ static async getStudentsWithoutRoom(req: Request, res: Response) {
       res.status(200).json({ message: 'Student deleted successfully' });
     } catch (error: any) {
       console.error('Error deleting student:', error);
-      // Lấy message lỗi cụ thể từ Service (vd: "Không thể xóa: Sinh viên đang ở phòng...")
       const message = error.message || 'Internal Server Error';
-      // Trả về 400 Bad Request để Frontend nhận được message
       res.status(400).json({ message });
     }
   }

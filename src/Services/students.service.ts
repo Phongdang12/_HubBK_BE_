@@ -344,6 +344,9 @@ export class StudentService {
   // ========================================
   // UPDATE STUDENT
   // ========================================
+  // ========================================
+  // UPDATE STUDENT (Đã tối ưu hóa)
+  // ========================================
   static async updateStudent(student: Student): Promise<void> {
     const conn = await pool.getConnection();
     try {
@@ -371,33 +374,9 @@ export class StudentService {
         }
       }
 
-      // =================================================================
-      // 🔥 LOGIC MỚI: TỰ ĐỘNG RỜI PHÒNG NẾU NON_ACTIVE
-      // =================================================================
-      if (student.study_status === 'Non_Active') {
-        // Lấy thông tin phòng hiện tại của sinh viên
-        const [rows]: any = await conn.query(
-          'SELECT building_id, room_id FROM student WHERE sssn = ? FOR UPDATE', 
-          [student.ssn]
-        );
-        
-        const currentInfo = rows[0];
-
-        // Nếu sinh viên đang ở trong phòng
-        if (currentInfo && currentInfo.building_id && currentInfo.room_id) {
-           // 1. Giảm sĩ số phòng cũ
-           await conn.query(`
-             UPDATE living_room 
-             SET current_num_of_students = GREATEST(current_num_of_students - 1, 0),
-                 occupancy_rate = (GREATEST(current_num_of_students - 1, 0) / max_num_of_students) * 100
-             WHERE building_id = ? AND room_id = ?
-           `, [currentInfo.building_id, currentInfo.room_id]);
-
-
-        }
-      }
-      // =================================================================
-
+      // 2. CHUẨN BỊ THAM SỐ (Xóa logic trừ sĩ số thủ công ở đây)
+      // Lưu ý: Nếu Non_Active, ta vẫn truyền building_id/room_id vào. 
+      // Stored Procedure sẽ tự quyết định set NULL và trừ sĩ số.
       const studentParams = [
         student.ssn,
         student.cccd,
@@ -411,21 +390,21 @@ export class StudentService {
         student.study_status,
         student.class_name || null,
         student.faculty || null,
-        student.building_id || null, // Nếu Non_Active thì cái này đã thành null ở trên
-        student.room_id || null,     // Nếu Non_Active thì cái này đã thành null ở trên
+        student.building_id || null, 
+        student.room_id || null,     
         student.phone_numbers,
         student.emails,
         student.addresses,
         student.has_health_insurance,
       ];
 
-      // Gọi Procedure update thông tin (Sử dụng conn để cùng transaction)
+      // 3. GỌI STORED PROCEDURE (Nơi xử lý chính logic database)
       await conn.query(
         'CALL update_student_info(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
         studentParams,
       );
 
-      // Update Guardian (Giữ nguyên)
+      // 4. Cập nhật người thân (Giữ nguyên)
       const hasGuardian = student.guardian_name || student.guardian_cccd;
       if (hasGuardian) {
         await conn.query('CALL update_guardian_info(?, ?, ?, ?, ?, ?, ?, ?)', [
@@ -462,7 +441,21 @@ export class StudentService {
     const [rows]: any = await pool.query(sql + ' LIMIT 1', params);
     return Array.isArray(rows) && rows.length > 0;
   }
+  // Kiểm tra CCCD có tồn tại không (dùng cho cả Create và Update)
+  static async doesCccdExist(cccd: string, excludeSsn?: string): Promise<boolean> {
+    const params: any[] = [cccd];
+    let sql = 'SELECT 1 FROM student WHERE cccd = ?';
+    
+    // Nếu là Update, phải loại trừ chính sinh viên đó ra
+    if (excludeSsn) {
+      sql += ' AND sssn <> ?';
+      params.push(excludeSsn);
+    }
 
+    const [rows]: any = await pool.query(sql + ' LIMIT 1', params);
+    return Array.isArray(rows) && rows.length > 0;
+  }
+  
   static async doesStudentIdExist(
     studentId: string,
     excludeSsn?: string,

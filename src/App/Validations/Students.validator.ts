@@ -20,7 +20,8 @@ export const GUARDIAN_RELATIONSHIP_ERROR_MESSAGE = 'Quan hệ với người th�
 export const GUARDIAN_BIRTHDAY_ERROR_MESSAGE = 'Ngày sinh người thân không hợp lệ.';
 export const GUARDIAN_PHONE_ERROR_MESSAGE = 'Số điện thoại người thân không hợp lệ.';
 export const GUARDIAN_ADDRESS_ERROR_MESSAGE = 'Địa chỉ người thân không hợp lệ.';
-
+export const GUARDIAN_DUPLICATE_CCCD_ERROR_MESSAGE = 'CCCD người thân không được trùng với CCCD của sinh viên.';
+export const STUDENT_CCCD_DUPLICATE_MESSAGE = 'CCCD sinh viên không hợp lệ hoặc đã tồn tại.';
 const splitMultiValue = (value?: unknown) =>
   typeof value === 'string' && value.length
     ? value.split(/[,;]+/).map((item) => item.trim()).filter(Boolean)
@@ -76,6 +77,17 @@ const BaseStudentShape = z.object({
 
 // 2. Tách logic refine ra một hàm riêng để tái sử dụng
 const commonRefinements = (data: any, ctx: z.RefinementCtx) => {
+  // --- [NEW] CHECK TRÙNG CCCD ---
+  // Kiểm tra nếu cả 2 trường đều có dữ liệu và giống hệt nhau
+  if (data.cccd && data.guardian_cccd && data.cccd === data.guardian_cccd) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['guardian_cccd'], // Báo lỗi ngay tại trường CCCD người thân
+      message: GUARDIAN_DUPLICATE_CCCD_ERROR_MESSAGE,
+    });
+  }
+  // ------------------------------
+
   const emailList = splitMultiValue(data.emails);
   const invalidEmail = emailList.find((email: string) => !EMAIL_REGEX.test(email));
   if (invalidEmail) {
