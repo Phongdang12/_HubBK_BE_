@@ -740,14 +740,34 @@ BEGIN
 END$$
 
 DELIMITER ;
-DELIMITER $
-CREATE PROCEDURE list_rooms_building(IN p_building_id CHAR(5))
-BEGIN
-    IF LENGTH(REPLACE(TRIM(p_building_id), ' ', '')) != 5 THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Building ID must be exactly 5 characters long.'; END IF;
-    SELECT r.building_id, r.room_id, r.current_num_of_students, r.max_num_of_students, r.occupancy_rate, r.rental_price, r.room_status, CONCAT(r.occupancy_rate, '%') AS formatted_occupancy_rate, (SELECT s.sex FROM student s WHERE s.building_id = r.building_id AND s.room_id = r.room_id LIMIT 1) AS room_gender FROM living_room r WHERE r.building_id = p_building_id ORDER BY r.room_id;
-END ;;
-
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `list_rooms_building`$$
+CREATE PROCEDURE `list_rooms_building`(IN p_building_id CHAR(5))
+BEGIN
+    IF LENGTH(REPLACE(TRIM(p_building_id), ' ', '')) != 5 THEN 
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Building ID must be exactly 5 characters long.';
+    END IF;
+
+    SELECT 
+        r.building_id,
+        r.room_id,
+        r.current_num_of_students,
+        r.max_num_of_students,
+        r.occupancy_rate,
+        r.rental_price,
+        r.room_status,
+        CONCAT(r.occupancy_rate, '%') AS formatted_occupancy_rate,
+        (SELECT s.sex 
+           FROM student s 
+          WHERE s.building_id = r.building_id 
+            AND s.room_id = r.room_id 
+          LIMIT 1) AS room_gender
+    FROM living_room r
+    WHERE r.building_id = p_building_id
+    ORDER BY r.room_id;
+END$$
 
 DROP PROCEDURE IF EXISTS `list_all_rooms`$$
 

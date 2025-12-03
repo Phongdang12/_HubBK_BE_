@@ -25,6 +25,20 @@ export const StatisticsQueryParams = z.object({
   from: z.string().optional(),
   to: z.string().optional(),
   buildingId: z.string().optional(),
+  period: z
+    .enum([
+      '1week',
+      '2weeks',
+      '3weeks',
+      '1month',
+      '3months',
+      '6months',
+      '1year',
+      'all',
+      'custom',
+    ])
+    .optional(),
+  includeStudents: z.string().optional(),
 });
 
 export const FacultyDistributionQuery = StatisticsQueryParams;

@@ -89,16 +89,9 @@ export class StatisticsService {
       ? capacityResult[0][0]?.total_capacity || 0
       : 0;
 
-    // Current residents (sum of current_num_of_students)
-    const residentsQuery = `SELECT COALESCE(SUM(current_num_of_students), 0) AS current_residents
-       FROM living_room
-       ${capacityWhere}`;
-    const residentsResult: any = await pool.query(residentsQuery, capacityParams);
-    const currentResidents = Array.isArray(residentsResult[0]) && residentsResult[0].length > 0
-      ? residentsResult[0][0]?.current_residents || 0
-      : 0;
-
-    // Total students (active with room) - KHÔNG lọc theo date
+    // Total students & current residents (active with room) - KHÔNG lọc theo date
+    // NOTE: Để tránh lệch số liệu giữa bảng living_room và bảng student,
+    // ta sử dụng chính số sinh viên đang active + có phòng làm "current residents".
     const studentsQuery = `SELECT COUNT(*) AS total_students
        FROM student s
        ${studentsWhereClause}`;
@@ -106,6 +99,9 @@ export class StatisticsService {
     const totalStudents = Array.isArray(studentsResult[0]) && studentsResult[0].length > 0
       ? Number(studentsResult[0][0]?.total_students) || 0
       : 0;
+
+    // Đồng nhất: currentResidents = totalStudents (số sinh viên đang ở thực tế)
+    const currentResidents = totalStudents;
 
     // Available rooms
     let availableWhere = buildingId
@@ -211,6 +207,7 @@ export class StatisticsService {
     buildingId?: string,
   ): Promise<OccupancyByBuildingResponse> {
     // KHÔNG lọc theo date - chỉ lọc theo building
+    // Để đồng bộ với KPI tổng quan, current_residents = số sinh viên Active có phòng tại từng tòa
     let whereClause = buildingId ? 'WHERE lr.building_id = ?' : '';
     const params: any[] = [];
 
@@ -221,8 +218,16 @@ export class StatisticsService {
     const query = `SELECT 
         lr.building_id AS building,
         COALESCE(SUM(lr.max_num_of_students), 0) AS total_capacity,
-        COALESCE(SUM(lr.current_num_of_students), 0) AS current_residents
+        COALESCE(COUNT(DISTINCT CASE 
+          WHEN s.study_status = 'Active' 
+            AND s.building_id IS NOT NULL 
+            AND s.room_id IS NOT NULL 
+          THEN s.sssn 
+        END), 0) AS current_residents
        FROM living_room lr
+       LEFT JOIN student s 
+         ON s.building_id = lr.building_id 
+        AND s.room_id = lr.room_id
        ${whereClause}
        GROUP BY lr.building_id
        ORDER BY lr.building_id`;
