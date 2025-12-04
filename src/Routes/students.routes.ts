@@ -29,7 +29,7 @@ router.post('/', StudentController.createStudent);
 // ==================================================================
 // ROUTE DYNAMIC (/:ssn) PHẢI ĐẶT CUỐI CÙNG
 // ==================================================================
-
+router.get('/check-existence', StudentController.checkExistence);
 // Lấy chi tiết theo SSN
 router.get(
   '/:ssn',

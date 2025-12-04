@@ -241,6 +241,35 @@ class StudentController {
       res.status(500).json({ message: 'Failed to fetch student options' });
     }
   }
+  static async checkExistence(req: Request, res: Response) {
+  try {
+    const { field, value } = req.query;
+
+    if (!value || typeof value !== 'string') {
+      res.status(400).json({ message: 'Value is required' });
+      return;
+    }
+
+    let exists = false;
+
+    if (field === 'student_id') {
+      exists = await StudentService.doesStudentIdExist(value);
+    } 
+    // Cho phép check cả cccd (sinh viên) và guardian_cccd (người thân)
+    // Nếu guardian_cccd trùng với bất kỳ sinh viên nào trong hệ thống -> Báo exists
+    else if (field === 'cccd' || field === 'guardian_cccd') {
+      exists = await StudentService.doesCccdExist(value);
+    } else {
+      res.status(400).json({ message: 'Invalid field check' });
+      return;
+    }
+
+    res.status(200).json({ exists });
+  } catch (error) {
+    console.error('Check existence error:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+}
 }
 
 export default StudentController;
