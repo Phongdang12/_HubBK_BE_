@@ -621,6 +621,36 @@ BEGIN
     END IF;
 END ;;
 
+DELIMITER $$
+
+
+
+CREATE PROCEDURE `list_rooms_building`(IN p_building_id CHAR(5))
+BEGIN
+    IF LENGTH(REPLACE(TRIM(p_building_id), ' ', '')) != 5 THEN 
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Building ID must be exactly 5 characters long.';
+    END IF;
+
+    SELECT 
+        r.building_id,
+        r.room_id,
+        r.current_num_of_students,
+        r.max_num_of_students,
+        r.occupancy_rate,
+        r.rental_price,
+        r.room_status,
+        CONCAT(r.occupancy_rate, '%') AS formatted_occupancy_rate,
+        (SELECT s.sex 
+           FROM student s 
+          WHERE s.building_id = r.building_id 
+            AND s.room_id = r.room_id 
+          LIMIT 1) AS room_gender
+    FROM living_room r
+    WHERE r.building_id = p_building_id
+    ORDER BY r.room_id;
+END ;;
+
 CREATE  PROCEDURE `insert_student`(IN p_sssn CHAR(8), IN p_cccd CHAR(12), IN p_first_name VARCHAR(20), IN p_last_name VARCHAR(20), IN p_birthday DATE, IN p_sex CHAR(1), IN p_ethnic_group VARCHAR(30), IN p_health_state VARCHAR(100), IN p_student_id CHAR(12), IN p_study_status VARCHAR(20), IN p_class_name VARCHAR(30), IN p_faculty VARCHAR(50), IN p_building_id CHAR(5), IN p_room_id CHAR(5), IN p_phone_numbers TEXT, IN p_emails TEXT, IN p_addresses TEXT, IN p_guardian_cccd CHAR(12), IN p_guardian_name VARCHAR(50), IN p_guardian_relationship VARCHAR(20), IN p_guardian_occupation VARCHAR(50), IN p_guardian_birthday DATE, IN p_guardian_phone_numbers TEXT, IN p_guardian_addresses TEXT)
 BEGIN
     INSERT INTO student (sssn, cccd, first_name, last_name, birthday, sex, ethnic_group, health_state, student_id, study_status, class_name, faculty, building_id, room_id, phone_numbers, emails, addresses, guardian_cccd, guardian_name, guardian_relationship, guardian_occupation, guardian_birthday, guardian_phone_numbers, guardian_addresses)
